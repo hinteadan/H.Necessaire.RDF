@@ -36,9 +36,12 @@ namespace H.Necessaire.RDF
 
                 foreach (var x in value)
                 {
-                    notes.AddOrUpdate(x.ToString(), x, (key, existing) => x);
+                    notes.AddOrUpdate(x.ID, x, (key, existing) => x);
                 }
             }
         }
+
+        public string Value() => Notes.Get(WellKnownRdfNote.Value);
+        public void Value(string value) => Notes = value.NoteAs(WellKnownRdfNote.Value).AsArray();
     }
 }
