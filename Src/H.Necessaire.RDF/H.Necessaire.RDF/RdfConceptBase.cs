@@ -43,5 +43,10 @@ namespace H.Necessaire.RDF
 
         public string Value() => Notes.Get(WellKnownRdfNote.Value);
         public void Value(string value) => Notes = value.NoteAs(WellKnownRdfNote.Value).AsArray();
+
+        public override string ToString()
+        {
+            return $"{ConceptType}:{Value().NullIfEmpty() ?? ID}";
+        }
     }
 }

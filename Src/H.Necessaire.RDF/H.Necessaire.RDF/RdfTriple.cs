@@ -17,5 +17,12 @@
         public RdfSubject<TSubject> Subject { get; set; }
         public RdfPredicate<TPredicate> Predicate { get; set; }
         public RdfObject<TObject> Object { get; set; }
+
+        public override string ToString()
+        {
+            return $"{Subject?.Value().NullIfEmpty() ?? Subject?.ID ?? "[No Subject]"} " +
+                $"{Predicate?.Value().NullIfEmpty() ?? Predicate?.ID ?? "[No Predicate]"} " +
+                $"{Object?.Value().NullIfEmpty() ?? Object?.ID ?? "[No Object]"} ";
+        }
     }
 }
