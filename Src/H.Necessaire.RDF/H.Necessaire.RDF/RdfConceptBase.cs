@@ -36,7 +36,7 @@ namespace H.Necessaire.RDF
 
                 foreach (var x in value)
                 {
-                    notes.TryAdd(x.ToString(), x);
+                    notes.AddOrUpdate(x.ToString(), x, (key, existing) => x);
                 }
             }
         }
