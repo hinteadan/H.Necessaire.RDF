@@ -7,7 +7,6 @@ namespace H.Necessaire.RDF
     public abstract class RdfConceptBase : ImAnRdfConcept
     {
         private ConcurrentDictionary<string, Note> notes = new ConcurrentDictionary<string, Note>();
-
         public virtual string ID { get; set; } = Guid.NewGuid().ToString();
         public abstract RdfConceptType ConceptType { get; }
         public Note[] Notes

@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "CLI - debug": {
+      "commandName": "Project",
+      "commandLineArgs": "debug"
+    }
+  }
+}
