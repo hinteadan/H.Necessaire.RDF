@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Reflection;
 using System.Threading.Tasks;
 
 namespace H.Necessaire.RDF
@@ -6,6 +7,7 @@ namespace H.Necessaire.RDF
     public abstract class RdfConcreteConceptBase<TPayload> : RdfConceptBase<TPayload>
     {
         #region Construct
+        static readonly PropertyInfo payloadIdProperty = GetPayloadIDProperty();
         readonly RdfPayloadAcquirer<TPayload> payloadAcquirer;
         protected RdfConcreteConceptBase(Func<Task<TPayload>> payloadAcquirer, ImAnRdfConcept meta) : base(meta)
         {
@@ -17,6 +19,58 @@ namespace H.Necessaire.RDF
         }
         #endregion
 
-        public override async Task<OperationResult<TPayload>> AcquirePayload() => await payloadAcquirer.AcquirePayload();
+        public override async Task<OperationResult<TPayload>> AcquirePayload()
+        {
+            OperationResult<TPayload> result =
+                await payloadAcquirer.AcquirePayload();
+
+            if (result.IsSuccessful && result.Payload != null)
+            {
+                UpdatePayloadIdNote(result.Payload);
+            }
+
+            return result;
+        }
+
+        private void UpdatePayloadIdNote(TPayload payload)
+        {
+            OperationResult<string> payloadIdResult = GetPayloadID(payload);
+            if (!payloadIdResult.IsSuccessful)
+                return;
+
+            Notes = payloadIdResult.Payload.NoteAs(WellKnownRdfNote.PayloadID).AsArray();
+        }
+
+        private static PropertyInfo GetPayloadIDProperty()
+        {
+            return
+                typeof(TPayload)
+                .GetProperty("ID", BindingFlags.Public | BindingFlags.Instance)
+                ??
+                typeof(TPayload)
+                .GetProperty("Id", BindingFlags.Public | BindingFlags.Instance)
+                ??
+                typeof(TPayload)
+                .GetProperty("id", BindingFlags.Public | BindingFlags.Instance)
+                ;
+        }
+
+        private static OperationResult<string> GetPayloadID(TPayload payload)
+        {
+            if (payloadIdProperty is null)
+                return OperationResult.Fail("Unknown ID property for payload").WithoutPayload<string>();
+
+            OperationResult<string> result = OperationResult.Fail("Not yet started").WithoutPayload<string>();
+
+            new Action(() =>
+            {
+                result = payloadIdProperty.GetValue(payload).ToString().ToWinResult();
+            })
+            .TryOrFailWithGrace(
+                onFail: ex => result = OperationResult.Fail(ex, $"Error occured while trying to read ID of payload. Reason: {ex.Message}").WithoutPayload<string>()
+            );
+
+            return result;
+        }
     }
 }
