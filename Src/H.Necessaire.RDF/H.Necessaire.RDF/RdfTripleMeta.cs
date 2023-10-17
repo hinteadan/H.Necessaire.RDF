@@ -22,7 +22,7 @@
         {
             return $"{Subject?.Value().NullIfEmpty() ?? Subject?.ID ?? "[No Subject]"} " +
                 $"{Predicate?.Value().NullIfEmpty() ?? Predicate?.ID ?? "[No Predicate]"} " +
-                $"{Object?.Value().NullIfEmpty() ?? Object?.ID ?? "[No Object]"} ";
+                $"{Object?.Value().NullIfEmpty() ?? Object?.ID ?? "[No Object]"}";
         }
     }
 }
