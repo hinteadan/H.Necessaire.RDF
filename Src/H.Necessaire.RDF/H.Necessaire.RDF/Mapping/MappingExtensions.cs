@@ -11,11 +11,19 @@ namespace H.Necessaire.RDF
         public static RdfSubject<T> ToRdfSubject<T>(this RdfSubjectMeta meta, T payload)
             => new RdfSubject<T>(payload, meta);
 
+        public static RdfSubjectMeta ToRdfMeta<T>(this RdfSubject<T> subject)
+            => new RdfSubjectMeta(subject);
+
+
         public static RdfPredicate<T> ToRdfPredicate<T>(this RdfPredicateMeta meta, Func<Task<T>> payloadAcquirer)
             => new RdfPredicate<T>(payloadAcquirer, meta);
 
         public static RdfPredicate<T> ToRdfPredicate<T>(this RdfPredicateMeta meta, T payload)
             => new RdfPredicate<T>(payload, meta);
+
+        public static RdfPredicateMeta ToRdfMeta<T>(this RdfPredicate<T> predicate)
+            => new RdfPredicateMeta(predicate);
+
 
         public static RdfObject<T> ToRdfObject<T>(this RdfObjectMeta meta, Func<Task<T>> payloadAcquirer)
             => new RdfObject<T>(payloadAcquirer, meta);
@@ -23,7 +31,24 @@ namespace H.Necessaire.RDF
         public static RdfObject<T> ToRdfObject<T>(this RdfObjectMeta meta, T payload)
             => new RdfObject<T>(payload, meta);
 
+        public static RdfObjectMeta ToRdfMeta<T>(this RdfObject<T> @object)
+            => new RdfObjectMeta(@object);
+
+
         public static RdfTriple<TS, TP, TO> ToRdfTriple<TS, TP, TO>(this RdfTripleMeta meta, RdfSubject<TS> subject, RdfPredicate<TP> predicate, RdfObject<TO> @object)
-            => new RdfTriple<TS, TP, TO>(meta) { Subject = subject, Predicate = predicate, Object = @object };
+            => new RdfTriple<TS, TP, TO>(meta)
+            {
+                Subject = subject,
+                Predicate = predicate,
+                Object = @object,
+            };
+
+        public static RdfTripleMeta ToRdfMeta<TS, TP, TO>(this RdfTriple<TS, TP, TO> triple)
+            => new RdfTripleMeta(triple)
+            {
+                Subject = triple.Subject.ToRdfMeta(),
+                Predicate = triple.Predicate.ToRdfMeta(),
+                Object = triple.Object.ToRdfMeta(),
+            };
     }
 }
