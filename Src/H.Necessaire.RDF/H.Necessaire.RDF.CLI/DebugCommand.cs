@@ -7,12 +7,8 @@ namespace H.Necessaire.RDF.CLI
     {
         public override Task<OperationResult> Run()
         {
-            RdfTripleMeta simpleTriple = new RdfTripleMeta
-            {
-                Subject = "John",
-                Predicate = "is",
-                Object = "awesome",
-            };
+            RdfTripleMeta simpleTriple = ("John", "is", "Awesome");
+
 
 
             return OperationResult.Win().AsTask();
