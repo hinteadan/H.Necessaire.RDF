@@ -14,12 +14,9 @@ namespace H.Necessaire.RDF
         }
         public abstract Task<OperationResult<TPayload>> AcquirePayload();
 
-        public string PayloadType() => Notes.Get(WellKnownRdfNote.PayloadType);
-        public string PayloadID() => Notes.Get(WellKnownRdfNote.PayloadID);
-
         private void UpdatePayloadNotes()
         {
-            Notes = typeof(TPayload).TypeName().NoteAs(WellKnownRdfNote.PayloadType).AsArray();
+            PayloadType(typeof(TPayload).Name);
         }
     }
 }

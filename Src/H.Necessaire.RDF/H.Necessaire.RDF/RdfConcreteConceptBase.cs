@@ -7,7 +7,7 @@ namespace H.Necessaire.RDF
     public abstract class RdfConcreteConceptBase<TPayload> : RdfConceptBase<TPayload>
     {
         #region Construct
-        static readonly PropertyInfo payloadIdProperty = GetPayloadIDProperty();
+        static readonly PropertyInfo payloadIdProperty = ProcessPayloadIDProperty();
         readonly RdfPayloadAcquirer<TPayload> payloadAcquirer;
         protected RdfConcreteConceptBase(Func<Task<TPayload>> payloadAcquirer, ImAnRdfConcept meta) : base(meta)
         {
@@ -35,13 +35,14 @@ namespace H.Necessaire.RDF
         private void UpdatePayloadIdNote(TPayload payload)
         {
             OperationResult<string> payloadIdResult = GetPayloadID(payload);
+
             if (!payloadIdResult.IsSuccessful)
                 return;
 
-            Notes = payloadIdResult.Payload.NoteAs(WellKnownRdfNote.PayloadID).AsArray();
+            PayloadID(payloadIdResult.Payload);
         }
 
-        private static PropertyInfo GetPayloadIDProperty()
+        private static PropertyInfo ProcessPayloadIDProperty()
         {
             return
                 typeof(TPayload)

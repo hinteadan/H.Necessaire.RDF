@@ -41,6 +41,10 @@ namespace H.Necessaire.RDF
             }
         }
 
+        public string PayloadType() => Notes.Get(WellKnownRdfNote.PayloadType);
+        public void PayloadType(string value) => Notes = value.NoteAs(WellKnownRdfNote.PayloadType).AsArray();
+        public string PayloadID() => Notes.Get(WellKnownRdfNote.PayloadID);
+        public void PayloadID(string value) => Notes = value.NoteAs(WellKnownRdfNote.PayloadID).AsArray();
         public string Value() => Notes.Get(WellKnownRdfNote.Value);
         public void Value(string value) => Notes = value.NoteAs(WellKnownRdfNote.Value).AsArray();
 
