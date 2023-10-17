@@ -11,5 +11,7 @@
         }
 
         public override RdfConceptType ConceptType { get; } = RdfConceptType.Object;
+
+        public static implicit operator RdfObjectMeta(string value) => new RdfObjectMeta().And(x => x.Value(value));
     }
 }
