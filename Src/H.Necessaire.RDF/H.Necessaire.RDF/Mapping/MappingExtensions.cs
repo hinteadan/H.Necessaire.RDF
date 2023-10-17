@@ -43,6 +43,22 @@ namespace H.Necessaire.RDF
                 Object = @object,
             };
 
+        public static RdfTriple<TS, TP, TO> WithPayload<TS, TP, TO>(this RdfTripleMeta meta, Func<Task<TS>> sPayAcquirer, Func<Task<TP>> pPayAcquirer, Func<Task<TO>> oPayAcquirer)
+            => new RdfTriple<TS, TP, TO>(meta)
+            {
+                Subject = meta.Subject?.WithPayload(sPayAcquirer),
+                Predicate = meta.Predicate?.WithPayload(pPayAcquirer),
+                Object = meta.Object?.WithPayload(oPayAcquirer),
+            };
+
+        public static RdfTriple<TS, TP, TO> WithPayload<TS, TP, TO>(this RdfTripleMeta meta, TS sPayload, TP pPayload, TO oPayload)
+            => new RdfTriple<TS, TP, TO>(meta)
+            {
+                Subject = meta.Subject?.WithPayload(sPayload),
+                Predicate = meta.Predicate?.WithPayload(pPayload),
+                Object = meta.Object?.WithPayload(oPayload),
+            };
+
         public static RdfTripleMeta ToRdfMeta<TS, TP, TO>(this RdfTriple<TS, TP, TO> triple)
             => new RdfTripleMeta(triple)
             {
