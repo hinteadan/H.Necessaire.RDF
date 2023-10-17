@@ -12,6 +12,11 @@ namespace H.Necessaire.RDF
         {
             ID = $"{ConceptType}-{Guid.NewGuid()}";
         }
+        protected RdfConceptBase(ImAnRdfConcept meta) : this()
+        {
+            this.ID = meta?.ID.NullIfEmpty() is null ? this.ID : meta.ID;
+            this.Notes = meta?.Notes;
+        }
 
         public virtual string ID { get; set; }
         public abstract RdfConceptType ConceptType { get; }
