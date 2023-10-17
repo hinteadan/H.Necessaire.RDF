@@ -1,5 +1,4 @@
 ﻿using H.Necessaire.Runtime.CLI.Commands;
-using System;
 using System.Threading.Tasks;
 
 namespace H.Necessaire.RDF.CLI
@@ -8,7 +7,9 @@ namespace H.Necessaire.RDF.CLI
     {
         public override Task<OperationResult> Run()
         {
-            throw new NotImplementedException();
+
+
+            return OperationResult.Win().AsTask();
         }
     }
 }
