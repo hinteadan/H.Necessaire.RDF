@@ -3,14 +3,14 @@ using System.Threading.Tasks;
 
 namespace H.Necessaire.RDF
 {
-    public class RdfPredicate<TPayload> : RdfConcreteConceptBase<TPayload>
+    public class RdfPredicate<TBody> : RdfConcreteConceptBase<TBody>
     {
         #region Construct
-        public RdfPredicate(Func<Task<TPayload>> payloadAcquirer, ImAnRdfConcept meta) : base(payloadAcquirer, meta)
+        public RdfPredicate(Func<Task<TBody>> bodyAcquirer, ImAnRdfConcept meta) : base(bodyAcquirer, meta)
         {
         }
 
-        public RdfPredicate(TPayload payload, ImAnRdfConcept meta) : base(payload, meta)
+        public RdfPredicate(TBody body, ImAnRdfConcept meta) : base(body, meta)
         {
         }
         #endregion

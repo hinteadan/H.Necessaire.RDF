@@ -3,14 +3,14 @@ using System.Threading.Tasks;
 
 namespace H.Necessaire.RDF
 {
-    public class RdfObject<TPayload> : RdfConcreteConceptBase<TPayload>
+    public class RdfObject<TBody> : RdfConcreteConceptBase<TBody>
     {
         #region Construct
-        public RdfObject(Func<Task<TPayload>> payloadAcquirer, ImAnRdfConcept meta) : base(payloadAcquirer, meta)
+        public RdfObject(Func<Task<TBody>> bodyAcquirer, ImAnRdfConcept meta) : base(bodyAcquirer, meta)
         {
         }
 
-        public RdfObject(TPayload payload, ImAnRdfConcept meta) : base(payload, meta)
+        public RdfObject(TBody body, ImAnRdfConcept meta) : base(body, meta)
         {
         }
         #endregion
