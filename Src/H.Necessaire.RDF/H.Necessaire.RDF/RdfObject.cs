@@ -16,5 +16,10 @@ namespace H.Necessaire.RDF
         #endregion
 
         public override RdfConceptType ConceptType { get; } = RdfConceptType.Object;
+
+        public static implicit operator RdfObject<TBody>((Func<Task<TBody>> bodyAcquirer, ImAnRdfConcept meta) parts)
+            => new RdfObject<TBody>(parts.Item1, parts.Item2);
+        public static implicit operator RdfObject<TBody>((TBody, ImAnRdfConcept) parts)
+            => new RdfObject<TBody>(parts.Item1, parts.Item2);
     }
 }
