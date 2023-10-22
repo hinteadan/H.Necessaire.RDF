@@ -10,9 +10,9 @@ namespace H.Necessaire.RDF.CLI
         {
             RdfTripleMeta simpleTriple = ("John", "is", "Awesome");
 
-            var triple = simpleTriple.WithPayload(
+            var triple = simpleTriple.WithBody(
                 "John",
-                ((RdfPredicateMeta)"is").WithPayload(((RdfPredicateMeta)"asOf").WithPayload(((RdfObjectMeta)DateTime.Today.ToString()).WithPayload(DateTime.Today))),
+                ((RdfPredicateMeta)"is").WithBody(((RdfPredicateMeta)"asOf").WithBody(((RdfObjectMeta)DateTime.Today.ToString()).WithBody(DateTime.Today))),
                 "Awesome"
                 );
 
