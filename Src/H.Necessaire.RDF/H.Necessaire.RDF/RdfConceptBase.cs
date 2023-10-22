@@ -41,10 +41,10 @@ namespace H.Necessaire.RDF
             }
         }
 
-        public string PayloadType() => Notes.Get(WellKnownRdfNote.PayloadType);
-        public void PayloadType(string value) => Notes = value.NoteAs(WellKnownRdfNote.PayloadType).AsArray();
-        public string PayloadID() => Notes.Get(WellKnownRdfNote.PayloadID);
-        public void PayloadID(string value) => Notes = value.NoteAs(WellKnownRdfNote.PayloadID).AsArray();
+        public string BodyType() => Notes.Get(WellKnownRdfNote.BodyType);
+        public void BodyType(string value) => Notes = value.NoteAs(WellKnownRdfNote.BodyType).AsArray();
+        public string BodyID() => Notes.Get(WellKnownRdfNote.BodyID);
+        public void BodyID(string value) => Notes = value.NoteAs(WellKnownRdfNote.BodyID).AsArray();
         public string Value() => Notes.Get(WellKnownRdfNote.Value);
         public void Value(string value) => Notes = value.NoteAs(WellKnownRdfNote.Value).AsArray();
 

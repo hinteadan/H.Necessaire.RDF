@@ -4,68 +4,68 @@ using System.Threading.Tasks;
 
 namespace H.Necessaire.RDF
 {
-    public abstract class RdfConcreteConceptBase<TPayload> : RdfConceptBase<TPayload>
+    public abstract class RdfConcreteConceptBase<TBody> : RdfConceptBase<TBody>
     {
         #region Construct
-        static readonly PropertyInfo payloadIdProperty = ProcessPayloadIDProperty();
-        readonly RdfPayloadAcquirer<TPayload> payloadAcquirer;
-        protected RdfConcreteConceptBase(Func<Task<TPayload>> payloadAcquirer, ImAnRdfConcept meta) : base(meta)
+        static readonly PropertyInfo bodyIdProperty = ProcessBodyIDProperty();
+        readonly RdfBodyAcquirer<TBody> bodyAcquirer;
+        protected RdfConcreteConceptBase(Func<Task<TBody>> bodyAcquirer, ImAnRdfConcept meta) : base(meta)
         {
-            this.payloadAcquirer = new RdfPayloadAcquirer<TPayload>(payloadAcquirer);
+            this.bodyAcquirer = new RdfBodyAcquirer<TBody>(bodyAcquirer);
         }
-        protected RdfConcreteConceptBase(TPayload payload, ImAnRdfConcept meta) : base(meta)
+        protected RdfConcreteConceptBase(TBody payload, ImAnRdfConcept meta) : base(meta)
         {
-            this.payloadAcquirer = new RdfPayloadAcquirer<TPayload>(payload);
+            this.bodyAcquirer = new RdfBodyAcquirer<TBody>(payload);
         }
         #endregion
 
-        public override async Task<OperationResult<TPayload>> AcquirePayload()
+        public override async Task<OperationResult<TBody>> AcquireBody()
         {
-            OperationResult<TPayload> result =
-                await payloadAcquirer.AcquirePayload();
+            OperationResult<TBody> result =
+                await bodyAcquirer.AcquireBody();
 
             if (result.IsSuccessful && result.Payload != null)
             {
-                UpdatePayloadIdNote(result.Payload);
+                UpdateBodyIdNote(result.Payload);
             }
 
             return result;
         }
 
-        private void UpdatePayloadIdNote(TPayload payload)
+        private void UpdateBodyIdNote(TBody body)
         {
-            OperationResult<string> payloadIdResult = GetPayloadID(payload);
+            OperationResult<string> payloadIdResult = GetBodyID(body);
 
             if (!payloadIdResult.IsSuccessful)
                 return;
 
-            PayloadID(payloadIdResult.Payload);
+            BodyID(payloadIdResult.Payload);
         }
 
-        private static PropertyInfo ProcessPayloadIDProperty()
+        private static PropertyInfo ProcessBodyIDProperty()
         {
             return
-                typeof(TPayload)
+                typeof(TBody)
                 .GetProperty("ID", BindingFlags.Public | BindingFlags.Instance)
                 ??
-                typeof(TPayload)
+                typeof(TBody)
                 .GetProperty("Id", BindingFlags.Public | BindingFlags.Instance)
                 ??
-                typeof(TPayload)
+                typeof(TBody)
                 .GetProperty("id", BindingFlags.Public | BindingFlags.Instance)
                 ;
         }
 
-        private static OperationResult<string> GetPayloadID(TPayload payload)
+        private static OperationResult<string> GetBodyID(TBody body)
         {
-            if (payloadIdProperty is null)
+            if (bodyIdProperty is null)
                 return OperationResult.Fail("Unknown ID property for payload").WithoutPayload<string>();
 
             OperationResult<string> result = OperationResult.Fail("Not yet started").WithoutPayload<string>();
 
             new Action(() =>
             {
-                result = payloadIdProperty.GetValue(payload).ToString().ToWinResult();
+                result = bodyIdProperty.GetValue(body).ToString().ToWinResult();
             })
             .TryOrFailWithGrace(
                 onFail: ex => result = OperationResult.Fail(ex, $"Error occured while trying to read ID of payload. Reason: {ex.Message}").WithoutPayload<string>()
