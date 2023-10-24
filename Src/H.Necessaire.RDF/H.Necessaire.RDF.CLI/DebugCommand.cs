@@ -23,12 +23,9 @@ namespace H.Necessaire.RDF.CLI
                 .Push(("has", "translations"))
                 ;
 
-            RdfTriple[] triples =
-                johnDoe
-                .TriplesFor("is", "has")
-                ;
+            RdfGraph graph = new RdfGraph { Root = johnDoe };
 
-            RdfNode[] nodes = triples.AsNodes().Select(x => (RdfNode)x).ToNoNullsArray();
+            string graphPrint = graph.ToString();
 
             return OperationResult.Win().AsTask();
         }
