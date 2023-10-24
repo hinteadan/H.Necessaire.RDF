@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 namespace H.Necessaire.RDF
 {
@@ -11,6 +12,12 @@ namespace H.Necessaire.RDF
         public RdfAspect Aspect { get; set; }
 
         public RdfNode Object => Aspect?.Object;
+
+        public RdfAspect[] Aspects { get; set; }
+
+        public bool IsQuoted() => Aspects?.Any() == true;
+
+        public bool IsAsserted() => Aspect?.Aspects?.Any() == true;
 
         public override string ToString()
         {
