@@ -5,6 +5,7 @@ namespace H.Necessaire.RDF
     public class RdfAspect : IGuidIdentity
     {
         public Guid ID { get; set; } = Guid.NewGuid();
+        public string IDTag { get; set; }
 
         public string DisplayLabel { get; set; }
 
@@ -27,14 +28,21 @@ namespace H.Necessaire.RDF
                 };
         }
 
-
         public override string ToString()
         {
             return
                 DisplayLabel.NullIfEmpty()
                 ??
+                IDTag.NullIfEmpty()
+                ??
                 ID.ToString()
                 ;
+        }
+
+
+        public static implicit operator RdfAspect((string, RdfNode) parts)
+        {
+            return new RdfAspect { IDTag = parts.Item1, Object = parts.Item2 };
         }
     }
 }

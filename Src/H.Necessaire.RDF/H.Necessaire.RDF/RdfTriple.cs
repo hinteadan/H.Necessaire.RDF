@@ -6,6 +6,7 @@ namespace H.Necessaire.RDF
     public class RdfTriple : IGuidIdentity
     {
         public Guid ID { get; set; } = Guid.NewGuid();
+        public string IDTag { get; set; }
 
         public RdfNode Subject { get; set; }
 
