@@ -40,7 +40,17 @@ namespace H.Necessaire.RDF
         }
 
 
+        public static implicit operator RdfAspect((string, MultiType<RdfNode, RdfTriple>) parts)
+        {
+            return new RdfAspect { IDTag = parts.Item1, Object = parts.Item2 };
+        }
+
         public static implicit operator RdfAspect((string, RdfNode) parts)
+        {
+            return new RdfAspect { IDTag = parts.Item1, Object = parts.Item2 };
+        }
+
+        public static implicit operator RdfAspect((string, RdfTriple) parts)
         {
             return new RdfAspect { IDTag = parts.Item1, Object = parts.Item2 };
         }

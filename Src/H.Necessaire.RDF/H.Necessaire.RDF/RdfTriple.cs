@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Linq;
-using System.Xml.Linq;
 
 namespace H.Necessaire.RDF
 {
@@ -39,6 +38,22 @@ namespace H.Necessaire.RDF
         {
             return
                 $"{Subject} {Aspect} {Object}".Trim().NullIfEmpty();
+        }
+
+
+        public static implicit operator RdfTriple((MultiType<RdfNode, RdfTriple>, RdfAspect) parts)
+        {
+            return new RdfTriple { Subject = parts.Item1, Aspect = parts.Item2 };
+        }
+
+        public static implicit operator RdfTriple((RdfNode, RdfAspect) parts)
+        {
+            return new RdfTriple { Subject = parts.Item1, Aspect = parts.Item2 };
+        }
+
+        public static implicit operator RdfTriple((RdfTriple, RdfAspect) parts)
+        {
+            return new RdfTriple { Subject = parts.Item1, Aspect = parts.Item2 };
         }
     }
 }
