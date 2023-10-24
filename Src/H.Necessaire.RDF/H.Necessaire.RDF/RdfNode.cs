@@ -12,6 +12,8 @@ namespace H.Necessaire.RDF
 
         public Note[] Notes { get; set; }
 
+        public DataBin Data { get; set; }
+
         public override string ToString()
         {
             return
