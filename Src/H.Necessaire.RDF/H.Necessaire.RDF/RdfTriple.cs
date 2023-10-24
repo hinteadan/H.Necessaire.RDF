@@ -18,9 +18,18 @@ namespace H.Necessaire.RDF
 
         public Note[] Notes { get; set; }
 
-        public bool IsQuoted() => Aspects?.Any() == true;
+        public bool IsQuoted => Aspects?.Any() == true;
 
-        public bool IsAsserted() => Aspect?.Aspects?.Any() == true;
+        public bool IsAsserted => Aspect?.Aspects?.Any() == true;
+
+        public RdfNode AsNode()
+        {
+            return
+                Subject
+                ?.And(x => {
+                    x.Aspects = x.Aspects.Push(Aspect).ToNoNullsArray();
+                });
+        }
 
         public override string ToString()
         {

@@ -27,6 +27,8 @@ namespace H.Necessaire.RDF.CLI
                 .TriplesFor("is", "has")
                 ;
 
+            RdfNode[] nodes = triples.AsNodes();
+
             return OperationResult.Win().AsTask();
         }
     }
