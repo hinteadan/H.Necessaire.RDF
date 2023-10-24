@@ -15,6 +15,8 @@ namespace H.Necessaire.RDF
 
         public RdfAspect[] Aspects { get; set; }
 
+        public Note[] Notes { get; set; }
+
         public bool IsQuoted() => Aspects?.Any() == true;
 
         public bool IsAsserted() => Aspect?.Aspects?.Any() == true;
