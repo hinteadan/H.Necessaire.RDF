@@ -15,7 +15,7 @@ namespace H.Necessaire.RDF.CLI
                 .Push(("has", "money"))
                 ;
 
-            RdfNode awesome = johnDoe.Aspects[0].Object.ToObject() as RdfNode;
+            RdfNode awesome = (RdfNode)johnDoe.Aspects[0].Object;
             awesome.Aspects
                 = awesome.Aspects
                 .Push(("is", "a word"))
