@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Xml.Linq;
 
 namespace H.Necessaire.RDF
 {
@@ -8,11 +9,11 @@ namespace H.Necessaire.RDF
         public Guid ID { get; set; } = Guid.NewGuid();
         public string IDTag { get; set; }
 
-        public RdfNode Subject { get; set; }
+        public MultiType<RdfNode, RdfTriple> Subject { get; set; }
 
         public RdfAspect Aspect { get; set; }
 
-        public RdfNode Object => Aspect?.Object;
+        public MultiType<RdfNode, RdfTriple> Object => Aspect?.Object;
 
         public RdfAspect[] Aspects { get; set; }
 
@@ -22,12 +23,15 @@ namespace H.Necessaire.RDF
 
         public bool IsAsserted => Aspect?.Aspects?.Any() == true;
 
-        public RdfNode AsNode()
+        public MultiType<RdfNode, RdfTriple> AsNode()
         {
             return
                 Subject
                 ?.And(x => {
-                    x.Aspects = x.Aspects.Push(Aspect).ToNoNullsArray();
+                    x.Read(
+                        node => node.Aspects = node.Aspects.Push(Aspect).ToNoNullsArray(),
+                        triple => triple.Aspects = triple.Aspects.Push(Aspect).ToNoNullsArray()
+                    );
                 });
         }
 

@@ -9,7 +9,7 @@ namespace H.Necessaire.RDF
 
         public string DisplayLabel { get; set; }
 
-        public RdfNode Object { get; set; }
+        public MultiType<RdfNode, RdfTriple> Object { get; set; }
 
         public RdfAspect[] Aspects { get; set; }
 
@@ -17,7 +17,7 @@ namespace H.Necessaire.RDF
 
         public DataBin Data { get; set; }
 
-        public RdfTriple ToTriple(RdfNode subject, params RdfAspect[] quotes)
+        public RdfTriple ToTriple(MultiType<RdfNode, RdfTriple> subject, params RdfAspect[] quotes)
         {
             return
                 new RdfTriple

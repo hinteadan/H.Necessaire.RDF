@@ -1,4 +1,5 @@
 ﻿using H.Necessaire.Runtime.CLI.Commands;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace H.Necessaire.RDF.CLI
@@ -14,7 +15,7 @@ namespace H.Necessaire.RDF.CLI
                 .Push(("has", "money"))
                 ;
 
-            RdfNode awesome = johnDoe.Aspects[0].Object;
+            RdfNode awesome = johnDoe.Aspects[0].Object.ToObject() as RdfNode;
             awesome.Aspects
                 = awesome.Aspects
                 .Push(("is", "a word"))
@@ -27,7 +28,7 @@ namespace H.Necessaire.RDF.CLI
                 .TriplesFor("is", "has")
                 ;
 
-            RdfNode[] nodes = triples.AsNodes();
+            RdfNode[] nodes = triples.AsNodes().Select(x => (RdfNode)x).ToNoNullsArray();
 
             return OperationResult.Win().AsTask();
         }
