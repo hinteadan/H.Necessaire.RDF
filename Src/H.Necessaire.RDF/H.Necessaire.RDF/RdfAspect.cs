@@ -16,6 +16,17 @@ namespace H.Necessaire.RDF
 
         public DataBin Data { get; set; }
 
+        public RdfTriple ToTriple(RdfNode subject, params RdfAspect[] quotes)
+        {
+            return
+                new RdfTriple
+                {
+                    Subject = subject,
+                    Aspect = this,
+                    Aspects = quotes.ToNoNullsArray(),
+                };
+        }
+
 
         public override string ToString()
         {
