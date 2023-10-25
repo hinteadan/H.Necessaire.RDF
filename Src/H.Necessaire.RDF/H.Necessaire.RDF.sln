@@ -9,7 +9,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tools", "Tools", "{E0239D8F
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H.Necessaire.RDF.CLI", "H.Necessaire.RDF.CLI\H.Necessaire.RDF.CLI.csproj", "{84F19CBC-B03F-4CCE-8339-D520C514766C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "H.Necessaire.RDF.UI.WindowsDesktop", "H.Necessaire.RDF.UI.WindowsDesktop\H.Necessaire.RDF.UI.WindowsDesktop.csproj", "{F5A944EB-FA6B-4BCA-842B-7015B4A6E354}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H.Necessaire.RDF.UI.WindowsDesktop", "H.Necessaire.RDF.UI.WindowsDesktop\H.Necessaire.RDF.UI.WindowsDesktop.csproj", "{F5A944EB-FA6B-4BCA-842B-7015B4A6E354}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "H.Necessaire.RDF.UI.Runtime", "H.Necessaire.RDF.UI.Runtime\H.Necessaire.RDF.UI.Runtime.csproj", "{DDD01DA8-ED42-431E-82CD-004A6A4394CD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -79,6 +81,22 @@ Global
 		{F5A944EB-FA6B-4BCA-842B-7015B4A6E354}.Release|x86.ActiveCfg = Release|x86
 		{F5A944EB-FA6B-4BCA-842B-7015B4A6E354}.Release|x86.Build.0 = Release|x86
 		{F5A944EB-FA6B-4BCA-842B-7015B4A6E354}.Release|x86.Deploy.0 = Release|x86
+		{DDD01DA8-ED42-431E-82CD-004A6A4394CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DDD01DA8-ED42-431E-82CD-004A6A4394CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DDD01DA8-ED42-431E-82CD-004A6A4394CD}.Debug|ARM64.ActiveCfg = Debug|Any CPU
+		{DDD01DA8-ED42-431E-82CD-004A6A4394CD}.Debug|ARM64.Build.0 = Debug|Any CPU
+		{DDD01DA8-ED42-431E-82CD-004A6A4394CD}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{DDD01DA8-ED42-431E-82CD-004A6A4394CD}.Debug|x64.Build.0 = Debug|Any CPU
+		{DDD01DA8-ED42-431E-82CD-004A6A4394CD}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{DDD01DA8-ED42-431E-82CD-004A6A4394CD}.Debug|x86.Build.0 = Debug|Any CPU
+		{DDD01DA8-ED42-431E-82CD-004A6A4394CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DDD01DA8-ED42-431E-82CD-004A6A4394CD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DDD01DA8-ED42-431E-82CD-004A6A4394CD}.Release|ARM64.ActiveCfg = Release|Any CPU
+		{DDD01DA8-ED42-431E-82CD-004A6A4394CD}.Release|ARM64.Build.0 = Release|Any CPU
+		{DDD01DA8-ED42-431E-82CD-004A6A4394CD}.Release|x64.ActiveCfg = Release|Any CPU
+		{DDD01DA8-ED42-431E-82CD-004A6A4394CD}.Release|x64.Build.0 = Release|Any CPU
+		{DDD01DA8-ED42-431E-82CD-004A6A4394CD}.Release|x86.ActiveCfg = Release|Any CPU
+		{DDD01DA8-ED42-431E-82CD-004A6A4394CD}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -86,6 +104,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{84F19CBC-B03F-4CCE-8339-D520C514766C} = {E0239D8F-4EF3-4528-9B31-A11411DD4207}
 		{F5A944EB-FA6B-4BCA-842B-7015B4A6E354} = {E0239D8F-4EF3-4528-9B31-A11411DD4207}
+		{DDD01DA8-ED42-431E-82CD-004A6A4394CD} = {E0239D8F-4EF3-4528-9B31-A11411DD4207}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E6C27770-C58F-4C37-B4C2-46A8ACDE31C7}
