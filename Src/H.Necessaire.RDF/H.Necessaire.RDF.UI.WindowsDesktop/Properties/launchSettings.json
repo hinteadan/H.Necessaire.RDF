@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "H.Necessaire.RDF.UI.WindowsDesktop (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "H.Necessaire.RDF.UI.WindowsDesktop (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}
