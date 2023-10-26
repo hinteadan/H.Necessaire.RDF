@@ -13,6 +13,7 @@
   </PropertyGroup>
   <ItemGroup>
     <None Remove="DefaultWindowChrome.xaml" />
+    <None Remove="Elements\DefaultHeader.xaml" />
   </ItemGroup>
 
   <ItemGroup>
@@ -49,6 +50,11 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Chromes\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Elements\DefaultHeader.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
 
   <!-- 

@@ -7,6 +7,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:hn="using:H.Necessaire.RDF.UI.Runtime"
     xmlns:local="using:H.Necessaire.RDF.UI.WindowsDesktop"
+    xmlns:element="using:H.Necessaire.RDF.UI.WindowsDesktop.Elements"
     mc:Ignorable="d"
     Name="WindowChrome"
     >
@@ -23,7 +24,7 @@
 
 
         <StackPanel Width="Auto" Height="Auto" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="0">
-            <TextBlock Text="Header" />
+            <element:DefaultHeader />
         </StackPanel>
 
         <ScrollView Height="Auto" Grid.Row="1">
