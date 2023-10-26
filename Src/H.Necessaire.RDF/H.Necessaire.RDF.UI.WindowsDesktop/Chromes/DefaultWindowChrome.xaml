@@ -17,9 +17,9 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="{x:Bind local:BindOps.MultiplyForGrid(hn:HNApp.Lication.Branding.SizingUnitInPixels, 5)}" />
+            <RowDefinition Height="{x:Bind local:BindOps.SizeForGrid(hn:HNApp.Lication.Branding.SizingUnitInPixels, 5)}" />
             <RowDefinition Height="*" />
-            <RowDefinition Height="{x:Bind local:BindOps.MultiplyForGrid(hn:HNApp.Lication.Branding.SizingUnitInPixels, 2.5)}" />
+            <RowDefinition Height="{x:Bind local:BindOps.SizeForGrid(hn:HNApp.Lication.Branding.SizingUnitInPixels, 2.5)}" />
         </Grid.RowDefinitions>
 
 
