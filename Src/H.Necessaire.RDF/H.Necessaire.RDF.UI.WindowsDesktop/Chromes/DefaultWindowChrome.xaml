@@ -23,7 +23,7 @@
         </Grid.RowDefinitions>
 
 
-        <StackPanel Width="Auto" Height="Auto" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="0">
+        <StackPanel Width="Auto" Height="Auto" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="0">
             <element:DefaultHeader />
         </StackPanel>
 

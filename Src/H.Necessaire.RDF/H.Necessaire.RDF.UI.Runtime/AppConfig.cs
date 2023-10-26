@@ -7,6 +7,7 @@
             Values = new[] {
                 "App".ConfigWith(
                     "Name".ConfigWith("H.Necessaire.RDF")
+                    , "DisplayName".ConfigWith("H.Necessaire's RDF UI Tools")
                     , "Copyright".ConfigWith("Copyright © {year}. H.Necessaire.RDF; by Hintea Dan Alexandru. All rights reserved. {version}")
                 )
                 , "Formatting".ConfigWith(

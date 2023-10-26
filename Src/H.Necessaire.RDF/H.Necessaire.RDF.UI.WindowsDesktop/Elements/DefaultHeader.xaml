@@ -9,11 +9,17 @@
     xmlns:root="using:H.Necessaire.RDF.UI.WindowsDesktop"
     mc:Ignorable="d">
 
-    <StackPanel>
+    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
         <Image
             Source="ms-appx:///Assets/Icons/IconLogo.png"
             Height="{x:Bind root:BindOps.Multiply(hn:HNApp.Lication.Branding.SizingUnitInPixels, 4)}"
-            Margin="{x:Bind root:BindOps.MultiplyForThickness(0, 0, hn:HNApp.Lication.Branding.SizingUnitInPixels, 1, 0, 0, 0, 0)}"
+            Margin="{x:Bind root:BindOps.MultiplyForThickness(0, 0, hn:HNApp.Lication.Branding.SizingUnitInPixels, 1)}"
+            />
+        <TextBlock
+            Text="{x:Bind AppDisplayName}"
+            FontSize="{x:Bind hn:HNApp.Lication.Branding.Typography.FontSizeLarge.Points}"
+            FontWeight="Bold"
+            VerticalAlignment="Center"
             />
     </StackPanel>
 </UserControl>
