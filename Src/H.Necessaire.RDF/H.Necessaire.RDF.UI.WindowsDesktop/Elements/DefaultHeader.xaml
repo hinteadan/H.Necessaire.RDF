@@ -2,13 +2,18 @@
 <UserControl
     x:Class="H.Necessaire.RDF.UI.WindowsDesktop.Elements.DefaultHeader"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:H.Necessaire.RDF.UI.WindowsDesktop.Elements"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:hn="using:H.Necessaire.RDF.UI.Runtime"
+    xmlns:root="using:H.Necessaire.RDF.UI.WindowsDesktop"
     mc:Ignorable="d">
 
     <StackPanel>
-        <TextBlock Text="Header goes here" />
+        <Image
+            Source="ms-appx:///Assets/Icons/IconLogo.png"
+            Height="{x:Bind root:BindOps.Multiply(hn:HNApp.Lication.Branding.SizingUnitInPixels, 4)}"
+            Margin="{x:Bind root:BindOps.MultiplyForThickness(0, 0, hn:HNApp.Lication.Branding.SizingUnitInPixels, 1, 0, 0, 0, 0)}"
+            />
     </StackPanel>
 </UserControl>
