@@ -30,7 +30,7 @@
         </ScrollView>
 
         <StackPanel Width="Auto" Height="Auto" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="2">
-            <TextBlock Text="Footer" />
+            <TextBlock Text="{x:Bind Copyright}" FontSize="{x:Bind hn:HNApp.Lication.Branding.Typography.FontSizeSmaller.Points}" />
         </StackPanel>
 
     </Grid>

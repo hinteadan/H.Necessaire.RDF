@@ -7,7 +7,7 @@
             Values = new[] {
                 "App".ConfigWith(
                     "Name".ConfigWith("H.Necessaire.RDF")
-                    , "Copyright".ConfigWith("Copyright &copy; {year}. H.Necessaire.RDF; by Hintea Dan Alexandru. All rights reserved. {version}")
+                    , "Copyright".ConfigWith("Copyright © {year}. H.Necessaire.RDF; by Hintea Dan Alexandru. All rights reserved. {version}")
                 )
                 , "Formatting".ConfigWith(
                       "DateAndTime".ConfigWith("ddd, MMM dd, yyyy 'at' HH:mm 'UTC'")
