@@ -3,41 +3,21 @@
 <Window
     x:Class="H.Necessaire.RDF.UI.WindowsDesktop.MainWindow"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:H.Necessaire.RDF.UI.WindowsDesktop"
-    xmlns:hn="using:H.Necessaire.RDF.UI.Runtime"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local="using:H.Necessaire.RDF.UI.WindowsDesktop"
     mc:Ignorable="d">
 
-    <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*" />
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="{x:Bind local:BindOps.MultiplyForGrid(hn:HNApp.Lication.Branding.SizingUnitInPixels, 5)}" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="{x:Bind local:BindOps.MultiplyForGrid(hn:HNApp.Lication.Branding.SizingUnitInPixels, 2.5)}" />
-        </Grid.RowDefinitions>
-
-
-        <StackPanel Width="Auto" Height="Auto" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="0">
-            <TextBlock Text="Header" />
-        </StackPanel>
-
-        <ScrollView Height="Auto" Grid.Row="1">
+    <local:DefaultWindowChrome>
+        <local:DefaultWindowChrome.Body>
             <StackPanel>
                 <TextBlock Text="Content" />
                 <TextBlock Text="Content" />
                 <TextBlock Text="Content" />
                 <TextBlock Text="Content" />
             </StackPanel>
-        </ScrollView>
+        </local:DefaultWindowChrome.Body>
+    </local:DefaultWindowChrome>
 
-        <StackPanel Width="Auto" Height="Auto" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="2">
-            <TextBlock Text="Footer" />
-        </StackPanel>
-        
-    </Grid>
-    
 </Window>

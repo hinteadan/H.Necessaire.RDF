@@ -11,6 +11,9 @@
     <UseWinUI>true</UseWinUI>
     <EnableMsixTooling>true</EnableMsixTooling>
   </PropertyGroup>
+  <ItemGroup>
+    <None Remove="DefaultWindowChrome.xaml" />
+  </ItemGroup>
 
   <ItemGroup>
     <Content Include="Assets\SplashScreen.scale-200.png" />
@@ -38,6 +41,11 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\H.Necessaire.RDF.UI.Runtime\H.Necessaire.RDF.UI.Runtime.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="DefaultWindowChrome.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
 
   <!-- 

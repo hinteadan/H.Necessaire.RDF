@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<UserControl
+    x:Class="H.Necessaire.RDF.UI.WindowsDesktop.DefaultWindowChrome"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:hn="using:H.Necessaire.RDF.UI.Runtime"
+    xmlns:local="using:H.Necessaire.RDF.UI.WindowsDesktop"
+    mc:Ignorable="d"
+    Name="WindowChrome">
+
+    <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="{x:Bind local:BindOps.MultiplyForGrid(hn:HNApp.Lication.Branding.SizingUnitInPixels, 5)}" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="{x:Bind local:BindOps.MultiplyForGrid(hn:HNApp.Lication.Branding.SizingUnitInPixels, 2.5)}" />
+        </Grid.RowDefinitions>
+
+
+        <StackPanel Width="Auto" Height="Auto" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="0">
+            <TextBlock Text="Header" />
+        </StackPanel>
+
+        <ScrollView Height="Auto" Grid.Row="1">
+            <ContentControl Content="{Binding Body, ElementName=WindowChrome}" />
+        </ScrollView>
+
+        <StackPanel Width="Auto" Height="Auto" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="2">
+            <TextBlock Text="Footer" />
+        </StackPanel>
+
+    </Grid>
+
+</UserControl>
