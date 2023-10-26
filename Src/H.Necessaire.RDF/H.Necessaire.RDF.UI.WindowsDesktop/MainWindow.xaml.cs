@@ -16,14 +16,7 @@ namespace H.Necessaire.RDF.UI.WindowsDesktop
         {
             this.InitializeComponent();
 
-            this.logger = HNApp.Licat.Ion.GetLogger<MainWindow>(application: "H.Necessaire.RDF.UI.WindowsDesktop");
-        }
-
-        private async void myButton_Click(object sender, RoutedEventArgs e)
-        {
-            myButton.Content = "Clicked";
-
-            await logger.LogWarn("myButton_Click Clicked");
+            this.logger = HNApp.Lication.Deps.GetLogger<MainWindow>();
         }
     }
 }
