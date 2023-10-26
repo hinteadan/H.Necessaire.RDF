@@ -7,17 +7,18 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:local="using:H.Necessaire.RDF.UI.WindowsDesktop"
+    xmlns:chrome="using:H.Necessaire.RDF.UI.WindowsDesktop.Chromes"
     mc:Ignorable="d">
 
-    <local:DefaultWindowChrome>
-        <local:DefaultWindowChrome.Body>
+    <chrome:DefaultWindowChrome>
+        <chrome:DefaultWindowChrome.Body>
             <StackPanel>
                 <TextBlock Text="Content" />
                 <TextBlock Text="Content" />
                 <TextBlock Text="Content" />
                 <TextBlock Text="Content" />
             </StackPanel>
-        </local:DefaultWindowChrome.Body>
-    </local:DefaultWindowChrome>
+        </chrome:DefaultWindowChrome.Body>
+    </chrome:DefaultWindowChrome>
 
 </Window>

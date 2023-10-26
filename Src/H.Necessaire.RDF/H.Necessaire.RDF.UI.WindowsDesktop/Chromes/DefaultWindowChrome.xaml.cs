@@ -6,7 +6,7 @@ using System;
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
 
-namespace H.Necessaire.RDF.UI.WindowsDesktop
+namespace H.Necessaire.RDF.UI.WindowsDesktop.Chromes
 {
     public sealed partial class DefaultWindowChrome : UserControl
     {

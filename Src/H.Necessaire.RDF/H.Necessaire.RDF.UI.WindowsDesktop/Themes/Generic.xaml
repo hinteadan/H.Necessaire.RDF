@@ -1,12 +1,13 @@
 <ResourceDictionary
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:H.Necessaire.RDF.UI.WindowsDesktop">
+    xmlns:local="using:H.Necessaire.RDF.UI.WindowsDesktop"
+    xmlns:chrome="using:H.Necessaire.RDF.UI.WindowsDesktop.Chromes">
 
-    <Style TargetType="local:DefaultWindowChrome" >
+    <Style TargetType="chrome:DefaultWindowChrome" >
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate TargetType="local:DefaultWindowChrome">
+                <ControlTemplate TargetType="chrome:DefaultWindowChrome">
                     <Border
                         Background="{TemplateBinding Background}"
                         BorderBrush="{TemplateBinding BorderBrush}"
