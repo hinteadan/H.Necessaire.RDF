@@ -19,8 +19,8 @@ namespace H.Necessaire.RDF.UI.WindowsDesktop
 
         public object Body
         {
-            get { return (object)GetValue(bodyProperty); }
-            set { SetValue(bodyProperty, value); }
+            get => GetValue(bodyProperty);
+            set => SetValue(bodyProperty, value);
         }
     }
 }
