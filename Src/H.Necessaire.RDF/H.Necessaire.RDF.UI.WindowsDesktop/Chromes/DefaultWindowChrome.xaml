@@ -28,7 +28,7 @@
         </StackPanel>
 
         <ScrollView Height="Auto" Grid.Row="1">
-            <ContentControl Content="{Binding Body, ElementName=WindowChrome}" />
+            <ContentControl Content="{Binding Body, ElementName=WindowChrome}" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" />
         </ScrollView>
 
         <StackPanel Width="Auto" Height="Auto" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="2">

@@ -13,12 +13,9 @@
 
     <chrome:DefaultWindowChrome>
         <chrome:DefaultWindowChrome.Body>
-            <StackPanel>
-                <TextBlock Text="Content" />
-                <TextBlock Text="Content" />
-                <TextBlock Text="Content" />
-                <TextBlock Text="Content" />
-            </StackPanel>
+            <Grid>
+                <Button HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Content="Test" />
+            </Grid>
         </chrome:DefaultWindowChrome.Body>
     </chrome:DefaultWindowChrome>
 
