@@ -16,6 +16,8 @@ namespace H.Necessaire.RDF.UI.WindowsDesktop
         {
             this.InitializeComponent();
 
+            this.ExtendsContentIntoTitleBar = true;
+
             this.logger = HNApp.Lication.Deps.GetLogger<MainWindow>();
         }
     }
