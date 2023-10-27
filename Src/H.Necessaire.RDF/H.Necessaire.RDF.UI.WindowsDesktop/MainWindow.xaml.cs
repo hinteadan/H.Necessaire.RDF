@@ -11,14 +11,13 @@ namespace H.Necessaire.RDF.UI.WindowsDesktop
     /// </summary>
     public sealed partial class MainWindow : Window
     {
-        readonly ImALogger logger;
         public MainWindow()
         {
             this.InitializeComponent();
 
             this.ExtendsContentIntoTitleBar = true;
 
-            this.logger = HNApp.Lication.Deps.GetLogger<MainWindow>();
+            pageChrome.Body = new Pages.HomePage();
         }
     }
 }

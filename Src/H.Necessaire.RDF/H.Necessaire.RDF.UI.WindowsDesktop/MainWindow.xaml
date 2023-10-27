@@ -12,10 +12,10 @@
     mc:Ignorable="d"
     >
 
-    <chrome:DefaultWindowChrome>
-        <chrome:DefaultWindowChrome.Body>
+    <chrome:DefaultWindowChrome x:Name="pageChrome">
+        <!--<chrome:DefaultWindowChrome.Body>
             <page:HomePage />
-        </chrome:DefaultWindowChrome.Body>
+        </chrome:DefaultWindowChrome.Body>-->
     </chrome:DefaultWindowChrome>
 
 </Window>

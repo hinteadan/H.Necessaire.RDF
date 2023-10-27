@@ -1,4 +1,6 @@
-﻿namespace H.Necessaire.RDF.UI.Runtime.Managers
+﻿using System.Threading.Tasks;
+
+namespace H.Necessaire.RDF.UI.Runtime.Managers
 {
     internal class AppStateManager : ImADependency
     {
@@ -9,5 +11,11 @@
             appState = dependencyProvider.Get<HNAppState>();
         }
         #endregion
+
+        public Task SetCurrentRdfGraphTo(RdfGraph rdfGraph)
+        {
+            appState.CurrentRdfGraph = rdfGraph;
+            return true.AsTask();
+        }
     }
 }
