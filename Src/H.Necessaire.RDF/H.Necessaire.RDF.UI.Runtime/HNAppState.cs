@@ -1,6 +1,6 @@
 ﻿namespace H.Necessaire.RDF.UI.Runtime
 {
-    public class HNAppState
+    internal class HNAppState
     {
         private RdfGraph currentRdfGraph = null;
 

@@ -4,7 +4,10 @@
     {
         public void RegisterDependencies(ImADependencyRegistry dependencyRegistry)
         {
-
+            dependencyRegistry
+                .Register<Managers.DependencyGroup>(() => new Managers.DependencyGroup())
+                .Register<UseCases.DependencyGroup>(() => new UseCases.DependencyGroup())
+                ;
         }
     }
 }

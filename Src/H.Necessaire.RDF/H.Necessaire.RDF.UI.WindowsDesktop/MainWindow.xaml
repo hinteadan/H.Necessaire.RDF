@@ -8,14 +8,13 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:local="using:H.Necessaire.RDF.UI.WindowsDesktop"
     xmlns:chrome="using:H.Necessaire.RDF.UI.WindowsDesktop.Chromes"
+    xmlns:page="using:H.Necessaire.RDF.UI.WindowsDesktop.Pages"
     mc:Ignorable="d"
     >
 
     <chrome:DefaultWindowChrome>
         <chrome:DefaultWindowChrome.Body>
-            <Grid>
-                <Button HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Content="Test" />
-            </Grid>
+            <page:HomePage />
         </chrome:DefaultWindowChrome.Body>
     </chrome:DefaultWindowChrome>
 
