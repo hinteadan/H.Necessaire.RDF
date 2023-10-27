@@ -5,6 +5,7 @@
         public void RegisterDependencies(ImADependencyRegistry dependencyRegistry)
         {
             dependencyRegistry
+                .Register<HNAppState>(() => new HNAppState())
                 .Register<Managers.DependencyGroup>(() => new Managers.DependencyGroup())
                 .Register<UseCases.DependencyGroup>(() => new UseCases.DependencyGroup())
                 ;

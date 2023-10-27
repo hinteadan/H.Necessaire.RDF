@@ -2,12 +2,6 @@
 {
     internal class HNAppState
     {
-        private RdfGraph currentRdfGraph = null;
-
-        public RdfGraph CurrentRdfGraph
-        {
-            get => currentRdfGraph;
-            set => currentRdfGraph = value;
-        }
+        public RdfGraph CurrentRdfGraph { get; set; }
     }
 }
