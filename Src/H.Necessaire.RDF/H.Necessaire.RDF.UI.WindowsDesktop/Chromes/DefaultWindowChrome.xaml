@@ -10,6 +10,7 @@
     xmlns:element="using:H.Necessaire.RDF.UI.WindowsDesktop.Elements"
     mc:Ignorable="d"
     Name="WindowChrome"
+    FontFamily="{x:Bind local:BindOps.FontFamily()}"
     >
 
     <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">

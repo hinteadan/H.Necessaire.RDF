@@ -1,5 +1,4 @@
-﻿using H.Necessaire.Models.Branding;
-using H.Necessaire.Runtime;
+﻿using H.Necessaire.Runtime;
 
 namespace H.Necessaire.RDF.UI.Runtime
 {
