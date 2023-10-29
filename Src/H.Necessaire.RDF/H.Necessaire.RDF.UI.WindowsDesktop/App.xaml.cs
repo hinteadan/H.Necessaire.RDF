@@ -43,9 +43,7 @@ namespace H.Necessaire.RDF.UI.WindowsDesktop
         /// <param name="args">Details about the launch request and process.</param>
         protected override void OnLaunched(Microsoft.UI.Xaml.LaunchActivatedEventArgs args)
         {
-            m_window = new MainWindow().And(x => { 
-                x.SystemBackdrop = new MicaBackdrop();
-            });
+            m_window = new MainWindow();
             mainWindowManager = WindowManager.Get(m_window).And(x => {
                 x.PersistenceId = Guid.NewGuid().ToString();
                 x.MinWidth = HNApp.Lication.Branding.SizingUnitInPixels * 64;

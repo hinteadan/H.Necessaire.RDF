@@ -12,6 +12,10 @@
     mc:Ignorable="d"
     >
 
+    <Window.SystemBackdrop>
+        <DesktopAcrylicBackdrop />
+    </Window.SystemBackdrop>
+
     <chrome:DefaultWindowChrome x:Name="pageChrome">
         <!--<chrome:DefaultWindowChrome.Body>
             <page:HomePage />
