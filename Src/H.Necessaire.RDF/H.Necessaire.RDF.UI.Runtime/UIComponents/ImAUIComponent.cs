@@ -10,6 +10,6 @@ namespace H.Necessaire.RDF.UI.Runtime.UIComponents
         Task Destroy();
         Task RunAtStartup();
 
-        Task SetState(TState state);
+        Task ApplyState(TState state);
     }
 }
