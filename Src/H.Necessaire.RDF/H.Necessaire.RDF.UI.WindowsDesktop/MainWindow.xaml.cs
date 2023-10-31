@@ -1,4 +1,5 @@
 using H.Necessaire.RDF.UI.Runtime;
+using H.Necessaire.RDF.UI.WindowsDesktop.UINavigation;
 using Microsoft.UI.Xaml;
 
 // To learn more about WinUI, the WinUI project structure,
@@ -16,6 +17,8 @@ namespace H.Necessaire.RDF.UI.WindowsDesktop
             this.InitializeComponent();
 
             this.ExtendsContentIntoTitleBar = true;
+
+            HNApp.Lication.Deps.Register<UINavigationRuntimeContext>(() => new UINavigationRuntimeContext(pageChrome));
 
             pageChrome.Body = new Pages.HomePage();
         }

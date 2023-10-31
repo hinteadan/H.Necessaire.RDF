@@ -12,6 +12,13 @@ namespace H.Necessaire.RDF.UI.WindowsDesktop.UINavigation
         {
         }
 
+        UINavigationRuntimeContext navigationRuntimeContext;
+        public override void ReferDependencies(ImADependencyProvider dependencyProvider)
+        {
+            base.ReferDependencies(dependencyProvider);
+            navigationRuntimeContext = dependencyProvider.Get<UINavigationRuntimeContext>();
+        }
+
         protected override Task DisposePage(ImAUIPage page)
         {
             throw new NotImplementedException();

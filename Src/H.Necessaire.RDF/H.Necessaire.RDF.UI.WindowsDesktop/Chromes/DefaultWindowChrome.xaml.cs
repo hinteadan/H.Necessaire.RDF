@@ -8,7 +8,7 @@ using System;
 
 namespace H.Necessaire.RDF.UI.WindowsDesktop.Chromes
 {
-    public sealed partial class DefaultWindowChrome : UserControl
+    public sealed partial class DefaultWindowChrome : UserControl, ImAUIPageContainer
     {
         static readonly DependencyProperty bodyProperty =
             DependencyProperty.Register("Body", typeof(object), typeof(DefaultWindowChrome), new PropertyMetadata(null));

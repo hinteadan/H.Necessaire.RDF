@@ -53,7 +53,6 @@
   <ItemGroup>
     <Folder Include="Assets\Icons\" />
     <Folder Include="Assets\Fonts\" />
-    <Folder Include="Chromes\" />
   </ItemGroup>
   <ItemGroup>
     <Page Update="Pages\HomePage.xaml">
