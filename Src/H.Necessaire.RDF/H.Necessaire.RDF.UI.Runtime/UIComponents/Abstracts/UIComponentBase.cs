@@ -9,7 +9,7 @@ namespace H.Necessaire.RDF.UI.Runtime.UIComponents.Abstracts
         private static readonly BrandingStyle brandingStyle = HNApp.Lication.Branding;
 
         private bool isBusy = false;
-        protected event EventHandler OnIsBusyChanged;
+        public event EventHandler OnIsBusyChanged;
 
         public bool IsBusy
         {
@@ -23,13 +23,13 @@ namespace H.Necessaire.RDF.UI.Runtime.UIComponents.Abstracts
 
         public virtual Task RunAtStartup() => Task.CompletedTask;
 
-        protected RuntimeConfig Config => runtimeConfig;
-        protected BrandingStyle Branding => brandingStyle;
-        protected T Get<T>() => HNApp.Lication.Deps.Get<T>();
-        protected ImALogger GetLogger<T>() => HNApp.Lication.Deps.GetLogger<T>("H.Necessaire.RDF.UI");
-        protected async Task<Version> GetAppVersion() => (await HNApp.Lication.Deps.Get<ImAVersionProvider>()?.GetCurrentVersion());
+        public RuntimeConfig Config => runtimeConfig;
+        public BrandingStyle Branding => brandingStyle;
+        public T Get<T>() => HNApp.Lication.Deps.Get<T>();
+        public ImALogger GetLogger<T>() => HNApp.Lication.Deps.GetLogger<T>("H.Necessaire.RDF.UI");
+        public async Task<Version> GetAppVersion() => (await HNApp.Lication.Deps.Get<ImAVersionProvider>()?.GetCurrentVersion());
 
-        protected IDisposable BusyFlag()
+        public IDisposable BusyFlag()
         {
             return
                 new ScopedRunner(
