@@ -2,14 +2,17 @@
 
 namespace H.Necessaire.RDF.UI.Runtime.UIComponents
 {
-    public interface ImAUIComponent<TState> where TState : ImAUIComponentState
+    public interface ImAUIComponent
     {
         bool IsBusy { get; }
-        TState CurrentState { get; }
         Task Initialize();
         Task Destroy();
         Task RunAtStartup();
+    }
 
+    public interface ImAUIComponent<TState> : ImAUIComponent where TState : ImAUIComponentState
+    {
+        TState CurrentState { get; }
         Task ApplyState(TState state);
     }
 }

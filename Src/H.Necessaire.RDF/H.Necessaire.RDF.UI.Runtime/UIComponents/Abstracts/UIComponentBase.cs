@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 
 namespace H.Necessaire.RDF.UI.Runtime.UIComponents.Abstracts
 {
-    public abstract class UIComponentBase<TState> : ImAUIComponent<TState> where TState : ImAUIComponentState
+    public abstract class UIComponentBase : UserControl ImAUIComponent
     {
         private static readonly RuntimeConfig runtimeConfig = HNApp.Lication.Deps.GetRuntimeConfig();
         private static readonly BrandingStyle brandingStyle = HNApp.Lication.Branding;
@@ -17,19 +17,11 @@ namespace H.Necessaire.RDF.UI.Runtime.UIComponents.Abstracts
             private set => (isBusy = value).And(_ => RaiseOnIsBusyChanged());
         }
 
-        public TState CurrentState { get; private set; }
-
         public virtual Task Destroy() => Task.CompletedTask;
 
         public virtual Task Initialize() => Task.CompletedTask;
 
         public virtual Task RunAtStartup() => Task.CompletedTask;
-
-        public virtual Task ApplyState(TState state)
-        {
-            CurrentState = state;
-            return Task.CompletedTask;
-        }
 
         protected RuntimeConfig Config => runtimeConfig;
         protected BrandingStyle Branding => brandingStyle;
@@ -52,6 +44,17 @@ namespace H.Necessaire.RDF.UI.Runtime.UIComponents.Abstracts
                 return;
 
             OnIsBusyChanged.Invoke(this, EventArgs.Empty);
+        }
+    }
+
+    public abstract class UIComponentBase<TState> : UIComponentBase, ImAUIComponent<TState> where TState : ImAUIComponentState
+    {
+        public TState CurrentState { get; private set; }
+
+        public virtual Task ApplyState(TState state)
+        {
+            CurrentState = state;
+            return Task.CompletedTask;
         }
     }
 }

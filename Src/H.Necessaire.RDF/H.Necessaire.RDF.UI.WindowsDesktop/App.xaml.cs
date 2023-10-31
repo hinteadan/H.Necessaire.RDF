@@ -1,21 +1,6 @@
 ﻿using H.Necessaire.RDF.UI.Runtime;
 using Microsoft.UI.Xaml;
-using Microsoft.UI.Xaml.Controls;
-using Microsoft.UI.Xaml.Controls.Primitives;
-using Microsoft.UI.Xaml.Data;
-using Microsoft.UI.Xaml.Input;
-using Microsoft.UI.Xaml.Media;
-using Microsoft.UI.Xaml.Navigation;
-using Microsoft.UI.Xaml.Shapes;
 using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.ApplicationModel;
-using Windows.ApplicationModel.Activation;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using WinUIEx;
 
 // To learn more about WinUI, the WinUI project structure,
@@ -35,6 +20,7 @@ namespace H.Necessaire.RDF.UI.WindowsDesktop
         public App()
         {
             this.InitializeComponent();
+            HNApp.Lication.Deps.Register<UIDependencyGroup>(() => new UIDependencyGroup());
         }
 
         /// <summary>
@@ -44,7 +30,8 @@ namespace H.Necessaire.RDF.UI.WindowsDesktop
         protected override void OnLaunched(Microsoft.UI.Xaml.LaunchActivatedEventArgs args)
         {
             m_window = new MainWindow();
-            mainWindowManager = WindowManager.Get(m_window).And(x => {
+            mainWindowManager = WindowManager.Get(m_window).And(x =>
+            {
                 x.PersistenceId = Guid.NewGuid().ToString();
                 x.MinWidth = HNApp.Lication.Branding.SizingUnitInPixels * 64;
                 x.MinHeight = HNApp.Lication.Branding.SizingUnitInPixels * 48;
