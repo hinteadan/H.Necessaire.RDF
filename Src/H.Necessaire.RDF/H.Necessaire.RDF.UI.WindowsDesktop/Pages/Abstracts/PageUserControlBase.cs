@@ -10,15 +10,16 @@ using System.Threading.Tasks;
 
 namespace H.Necessaire.RDF.UI.WindowsDesktop.Pages.Abstracts
 {
-    public abstract partial class PageUserControlBase : UserControl, ImAUIPage, INotifyPropertyChanged
+    public abstract partial class PageUserControlBase<TState> : UserControl, ImAUIPage<TState>, INotifyPropertyChanged where TState : ImAUIComponentState
     {
-        readonly UIPageComposer composer;
+        readonly UIPageComposer<TState> composer;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public PageUserControlBase()
+        public PageUserControlBase(TState initialState)
         {
-            composer = new UIPageComposer(GetType());
+            composer = new UIPageComposer<TState>(GetType());
+            composer.ApplyState(initialState);
         }
         public string Title => composer.Title;
 
@@ -27,6 +28,8 @@ namespace H.Necessaire.RDF.UI.WindowsDesktop.Pages.Abstracts
         public RuntimeConfig Config => composer.Config;
 
         public BrandingStyle Branding => composer.Branding;
+
+        public TState State => composer.State;
 
         public IDisposable BusyFlag() => composer.BusyFlag();
         public T Get<T>() => composer.Get<T>();
@@ -62,9 +65,15 @@ namespace H.Necessaire.RDF.UI.WindowsDesktop.Pages.Abstracts
             await composer.Use(navigationParams);
         }
 
-        protected void RaisePropertyChanged(PropertyChangedEventArgs args)
+        public async Task ApplyState(TState state)
         {
-            PropertyChanged?.Invoke(this, args);
+            await composer.ApplyState(state);
+            NotifyStateChanged();
+        }
+
+        private void NotifyStateChanged()
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(null));
         }
     }
 }
