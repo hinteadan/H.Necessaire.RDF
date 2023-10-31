@@ -1,5 +1,6 @@
 ﻿using H.Necessaire.RDF.UI.Runtime.UIComponents;
 using H.Necessaire.RDF.UI.Runtime.UINavigation.Abstracts;
+using H.Necessaire.RDF.UI.WindowsDesktop.Chromes;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -13,20 +14,29 @@ namespace H.Necessaire.RDF.UI.WindowsDesktop.UINavigation
         }
 
         UINavigationRuntimeContext navigationRuntimeContext;
+        ImAUIPageContainer pageContainer;
         public override void ReferDependencies(ImADependencyProvider dependencyProvider)
         {
             base.ReferDependencies(dependencyProvider);
             navigationRuntimeContext = dependencyProvider.Get<UINavigationRuntimeContext>();
+            pageContainer = navigationRuntimeContext.PageContainer;
         }
 
-        protected override Task DisposePage(ImAUIPage page)
+        protected override async Task DisposePage(ImAUIPage page)
         {
-            throw new NotImplementedException();
+            pageContainer.Body = null;
+
+            if (page is IAsyncDisposable)
+                await new Func<Task>(async () => await (page as IAsyncDisposable).DisposeAsync()).TryOrFailWithGrace(onFail: null);
+            if (page is IDisposable)
+                new Action(() => (page as IDisposable).Dispose()).TryOrFailWithGrace(onFail: null);
         }
 
         protected override Task PresentPage(ImAUIPage page)
         {
-            throw new NotImplementedException();
+            pageContainer.Body = page;
+
+            return Task.CompletedTask;
         }
     }
 }
