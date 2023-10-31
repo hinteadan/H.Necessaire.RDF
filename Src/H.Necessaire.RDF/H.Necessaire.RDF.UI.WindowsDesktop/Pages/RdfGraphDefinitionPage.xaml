@@ -36,8 +36,12 @@
                 Orientation="Vertical"
                 HorizontalAlignment="Stretch"
                 >
+                
                 <TextBox Header="ID" Text="{x:Bind State.RdfGraph.ID, Mode=OneWay}" IsReadOnly="True" />
                 <Button ClickMode="Release" Content="Generate New ID" Click="GenerateNewID_Click" />
+
+                <TextBox Header="ID Tag" Text="{x:Bind State.RdfGraph.IDTag, Mode=TwoWay}" />
+
             </StackPanel>
         </Grid>
 
