@@ -15,6 +15,7 @@
     <None Remove="DefaultWindowChrome.xaml" />
     <None Remove="Elements\DefaultHeader.xaml" />
     <None Remove="Pages\HomePage.xaml" />
+    <None Remove="Pages\RdfGraphDefinitionPage.xaml" />
   </ItemGroup>
 
   <ItemGroup>
@@ -53,6 +54,11 @@
   <ItemGroup>
     <Folder Include="Assets\Icons\" />
     <Folder Include="Assets\Fonts\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Pages\RdfGraphDefinitionPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Page Update="Pages\HomePage.xaml">

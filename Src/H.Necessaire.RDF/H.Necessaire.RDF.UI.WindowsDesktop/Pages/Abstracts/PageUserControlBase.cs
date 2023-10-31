@@ -2,6 +2,7 @@
 using H.Necessaire.RDF.UI.Runtime.UIComponents;
 using H.Necessaire.RDF.UI.Runtime.UIComponents.Concrete;
 using H.Necessaire.RDF.UI.Runtime.UINavigation;
+using H.Necessaire.RDF.UI.WindowsDesktop.UINavigation;
 using Microsoft.UI.Xaml.Controls;
 using Org.BouncyCastle.Pqc.Crypto.Lms;
 using System;
@@ -13,6 +14,7 @@ namespace H.Necessaire.RDF.UI.WindowsDesktop.Pages.Abstracts
     public abstract partial class PageUserControlBase<TState> : UserControl, ImAUIPage<TState>, INotifyPropertyChanged where TState : ImAUIComponentState
     {
         readonly UIPageComposer<TState> composer;
+        readonly ImAUINavigator uiNavigator;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -20,8 +22,9 @@ namespace H.Necessaire.RDF.UI.WindowsDesktop.Pages.Abstracts
         {
             composer = new UIPageComposer<TState>(GetType());
             composer.ApplyState(initialState);
+            uiNavigator = HNApp.Lication.Deps.Get<ImAUINavigator>();
         }
-        public string Title => composer.Title;
+        public virtual string Title => composer.Title;
 
         public bool IsBusy => composer.IsBusy;
 
@@ -70,6 +73,8 @@ namespace H.Necessaire.RDF.UI.WindowsDesktop.Pages.Abstracts
             await composer.ApplyState(state);
             NotifyStateChanged();
         }
+
+        protected ImAUINavigator Navi => uiNavigator;
 
         private void NotifyStateChanged()
         {

@@ -10,8 +10,6 @@ using System;
 
 namespace H.Necessaire.RDF.UI.WindowsDesktop.Pages
 {
-
-
     public abstract class HomePageBase : PageUserControlBase<HomePageBase.PageState>
     {
         public HomePageBase() : base(new PageState { }) { }
@@ -38,6 +36,7 @@ namespace H.Necessaire.RDF.UI.WindowsDesktop.Pages
             )
             {
                 await useCase.CreateNewRdfGraph();
+                await Navi.Go(NavPath.RdfGraphDefinition);
             }
         }
 
