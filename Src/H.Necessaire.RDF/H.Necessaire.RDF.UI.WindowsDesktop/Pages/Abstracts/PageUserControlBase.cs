@@ -3,14 +3,19 @@ using H.Necessaire.RDF.UI.Runtime.UIComponents;
 using H.Necessaire.RDF.UI.Runtime.UIComponents.Concrete;
 using H.Necessaire.RDF.UI.Runtime.UINavigation;
 using Microsoft.UI.Xaml.Controls;
+using Org.BouncyCastle.Pqc.Crypto.Lms;
 using System;
+using System.ComponentModel;
 using System.Threading.Tasks;
 
 namespace H.Necessaire.RDF.UI.WindowsDesktop.Pages.Abstracts
 {
-    public abstract partial class PageUserControlBase : UserControl, ImAUIPage
+    public abstract partial class PageUserControlBase : UserControl, ImAUIPage, INotifyPropertyChanged
     {
         readonly UIPageComposer composer;
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
         public PageUserControlBase()
         {
             composer = new UIPageComposer(GetType());
@@ -55,6 +60,11 @@ namespace H.Necessaire.RDF.UI.WindowsDesktop.Pages.Abstracts
         public virtual async Task Use(UINavigationParams navigationParams)
         {
             await composer.Use(navigationParams);
+        }
+
+        protected void RaisePropertyChanged(PropertyChangedEventArgs args)
+        {
+            PropertyChanged?.Invoke(this, args);
         }
     }
 }

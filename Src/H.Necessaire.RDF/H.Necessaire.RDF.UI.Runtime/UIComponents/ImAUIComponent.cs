@@ -24,7 +24,7 @@ namespace H.Necessaire.RDF.UI.Runtime.UIComponents
 
     public interface ImAUIComponent<TState> : ImAUIComponent where TState : ImAUIComponentState
     {
-        TState CurrentState { get; }
+        TState State { get; }
         Task ApplyState(TState state);
     }
 }

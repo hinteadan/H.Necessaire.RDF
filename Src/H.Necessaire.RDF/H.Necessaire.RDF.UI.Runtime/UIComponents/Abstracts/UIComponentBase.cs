@@ -42,11 +42,11 @@ namespace H.Necessaire.RDF.UI.Runtime.UIComponents.Abstracts
 
     public abstract class UIComponentBase<TState> : UIComponentBase, ImAUIComponent<TState> where TState : ImAUIComponentState
     {
-        public TState CurrentState { get; private set; }
+        public TState State { get; protected set; }
 
         public virtual Task ApplyState(TState state)
         {
-            CurrentState = state;
+            State = state;
             return Task.CompletedTask;
         }
     }

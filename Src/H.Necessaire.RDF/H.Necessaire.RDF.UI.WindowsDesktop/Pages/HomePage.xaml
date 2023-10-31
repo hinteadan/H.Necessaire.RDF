@@ -18,7 +18,7 @@
         >
 
         <TextBlock
-            Text="HOME"
+            Text="{x:Bind Title}"
             FontWeight="Bold"
             FontSize="{x:Bind hn:HNApp.Lication.Branding.Typography.FontSizeLarge.Points}"
             HorizontalAlignment="Stretch"
@@ -34,6 +34,15 @@
             Create new RDF Graph
         </Button>
 
+        <Button
+            ClickMode="Release"
+            Click="Debug_Click"
+            >
+            Debug
+        </Button>
+
+        <TextBlock x:Name="debugLabel" Text="{x:Bind State.DebugLabel, Mode=OneWay}"/>
+
     </StackPanel>
-    
+
 </abs:PageUserControlBase>
