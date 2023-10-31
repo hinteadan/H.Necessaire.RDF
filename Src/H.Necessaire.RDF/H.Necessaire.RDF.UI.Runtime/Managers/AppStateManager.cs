@@ -17,5 +17,14 @@ namespace H.Necessaire.RDF.UI.Runtime.Managers
             appState.CurrentRdfGraph = rdfGraph;
             return true.AsTask();
         }
+
+        public Task<RdfGraph> GetCurrentRdfGraph()
+        {
+            return
+                appState
+                .CurrentRdfGraph
+                .AsTask()
+                ;
+        }
     }
 }

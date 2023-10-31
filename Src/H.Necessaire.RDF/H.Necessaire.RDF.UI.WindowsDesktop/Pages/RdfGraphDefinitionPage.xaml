@@ -2,12 +2,12 @@
 <local:RdfGraphDefinitionPageBase
     x:Class="H.Necessaire.RDF.UI.WindowsDesktop.Pages.RdfGraphDefinitionPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:H.Necessaire.RDF.UI.WindowsDesktop.Pages"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:hn="using:H.Necessaire.RDF.UI.Runtime"
     xmlns:root="using:H.Necessaire.RDF.UI.WindowsDesktop"
-    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local="using:H.Necessaire.RDF.UI.WindowsDesktop.Pages"
     mc:Ignorable="d">
 
     <StackPanel
@@ -30,6 +30,16 @@
             >
             Go Back
         </Button>
+
+        <Grid>
+            <StackPanel
+                Orientation="Vertical"
+                HorizontalAlignment="Stretch"
+                >
+                <TextBox Header="ID" Text="{x:Bind State.RdfGraph.ID, Mode=OneWay}" IsReadOnly="True" />
+                <Button ClickMode="Release" Content="Generate New ID" Click="GenerateNewID_Click" />
+            </StackPanel>
+        </Grid>
 
     </StackPanel>
 </local:RdfGraphDefinitionPageBase>

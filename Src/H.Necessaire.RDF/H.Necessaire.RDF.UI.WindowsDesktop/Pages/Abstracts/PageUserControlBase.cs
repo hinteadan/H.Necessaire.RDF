@@ -2,17 +2,16 @@
 using H.Necessaire.RDF.UI.Runtime.UIComponents;
 using H.Necessaire.RDF.UI.Runtime.UIComponents.Concrete;
 using H.Necessaire.RDF.UI.Runtime.UINavigation;
-using H.Necessaire.RDF.UI.WindowsDesktop.UINavigation;
 using Microsoft.UI.Xaml.Controls;
-using Org.BouncyCastle.Pqc.Crypto.Lms;
 using System;
 using System.ComponentModel;
 using System.Threading.Tasks;
 
 namespace H.Necessaire.RDF.UI.WindowsDesktop.Pages.Abstracts
 {
-    public abstract partial class PageUserControlBase<TState> : UserControl, ImAUIPage<TState>, INotifyPropertyChanged where TState : ImAUIComponentState
+    public abstract partial class PageUserControlBase<TState> : UserControl, ImAUIPage<TState>, INotifyPropertyChanged, IAsyncDisposable where TState : ImAUIComponentState
     {
+        #region Construct
         readonly UIPageComposer<TState> composer;
         readonly ImAUINavigator uiNavigator;
 
@@ -23,7 +22,33 @@ namespace H.Necessaire.RDF.UI.WindowsDesktop.Pages.Abstracts
             composer = new UIPageComposer<TState>(GetType());
             composer.ApplyState(initialState);
             uiNavigator = HNApp.Lication.Deps.Get<ImAUINavigator>();
+
+            Loading += PageUserControlBase_Loading;
+            Loaded += PageUserControlBase_Loaded;
         }
+
+        private void PageUserControlBase_Loading(Microsoft.UI.Xaml.FrameworkElement sender, object args)
+        {
+            Initialize().Wait(TimeSpan.FromSeconds(3));
+        }
+
+        private async void PageUserControlBase_Loaded(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
+        {
+            using (BusyFlag())
+            {
+                await RunAtStartup();
+            }
+        }
+
+        public async ValueTask DisposeAsync()
+        {
+            Loaded -= PageUserControlBase_Loaded;
+            Loading -= PageUserControlBase_Loading;
+
+            await Destroy();
+        }
+        #endregion
+
         public virtual string Title => composer.Title;
 
         public bool IsBusy => composer.IsBusy;

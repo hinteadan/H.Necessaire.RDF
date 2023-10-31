@@ -3,6 +3,7 @@ using H.Necessaire.RDF.UI.Runtime.UseCases;
 using H.Necessaire.RDF.UI.WindowsDesktop.Pages.Abstracts;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
+using System.Threading.Tasks;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -19,12 +20,21 @@ namespace H.Necessaire.RDF.UI.WindowsDesktop.Pages
     }
     public sealed partial class RdfGraphDefinitionPage : RdfGraphDefinitionPageBase
     {
+        #region Construct
         GraphDefinitionUseCase useCase;
         public RdfGraphDefinitionPage()
         {
             this.InitializeComponent();
             useCase = Get<GraphDefinitionUseCase>();
         }
+
+        public override async Task Initialize()
+        {
+            await base.Initialize();
+
+            State.RdfGraph = await useCase.GetCurrentRdfGraph();
+        }
+        #endregion
 
         public override string Title => "RDF Graph Definition";
 
@@ -36,6 +46,15 @@ namespace H.Necessaire.RDF.UI.WindowsDesktop.Pages
             )
             {
                 await Navi.GoBack();
+            }
+        }
+
+        private async void GenerateNewID_Click(object sender, RoutedEventArgs e)
+        {
+            using ((sender as Button).DisabledScope())
+            {
+                await useCase.GenerateNewRdfGraphID();
+                await ApplyState(State);
             }
         }
     }
