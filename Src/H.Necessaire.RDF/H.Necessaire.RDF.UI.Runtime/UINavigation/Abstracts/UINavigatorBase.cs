@@ -13,7 +13,7 @@ namespace H.Necessaire.RDF.UI.Runtime.UINavigation.Abstracts
         protected readonly Stack<(string path, ImAUIPage page)> navigationStack = new Stack<(string path, ImAUIPage page)>();
         protected UINavigatorBase(IDictionary<string, Func<Task<ImAUIPage>>> routes)
         {
-            this.routes = routes;
+            this.routes = routes ?? new Dictionary<string, Func<Task<ImAUIPage>>>();
         }
 
         ImALogger logger;

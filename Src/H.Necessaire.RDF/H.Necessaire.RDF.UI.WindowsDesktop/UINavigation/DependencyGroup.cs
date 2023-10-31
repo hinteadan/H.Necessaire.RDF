@@ -7,7 +7,7 @@ namespace H.Necessaire.RDF.UI.WindowsDesktop.UINavigation
         public void RegisterDependencies(ImADependencyRegistry dependencyRegistry)
         {
             dependencyRegistry
-                .Register<ImAUINavigator>(() => new UINavigator())
+                .Register<ImAUINavigator>(() => new UINavigator(null))
                 ;
         }
     }

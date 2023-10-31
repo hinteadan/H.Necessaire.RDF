@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 
 namespace H.Necessaire.RDF.UI.Runtime.UIComponents.Abstracts
 {
-    public abstract class UIComponentBase : UserControl ImAUIComponent
+    public abstract class UIComponentBase : ImAUIComponent
     {
         private static readonly RuntimeConfig runtimeConfig = HNApp.Lication.Deps.GetRuntimeConfig();
         private static readonly BrandingStyle brandingStyle = HNApp.Lication.Branding;
