@@ -23,5 +23,13 @@
             HorizontalTextAlignment="Left"
             Margin="{x:Bind root:BindOps.SizeForThickness(hn:HNApp.Lication.Branding.SizingUnitInPixels, 1, 0, 0)}"
             />
+
+        <Button
+            ClickMode="Release"
+            Click="Back_Click"
+            >
+            Go Back
+        </Button>
+
     </StackPanel>
 </local:RdfGraphDefinitionPageBase>
