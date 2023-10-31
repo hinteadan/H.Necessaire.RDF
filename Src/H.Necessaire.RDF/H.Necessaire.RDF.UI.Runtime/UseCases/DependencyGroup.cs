@@ -6,6 +6,7 @@
         {
             dependencyRegistry
                 .RegisterAlwaysNew<HomePageUseCase>(() => new HomePageUseCase())
+                .RegisterAlwaysNew<GraphDefinitionUseCase>(() => new GraphDefinitionUseCase())
                 ;
         }
     }

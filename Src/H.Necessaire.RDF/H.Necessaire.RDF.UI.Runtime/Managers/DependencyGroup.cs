@@ -6,6 +6,7 @@
         {
             dependencyRegistry
                 .Register<AppStateManager>(() => new AppStateManager())
+                .Register<GraphDefinitionManager>(() => new GraphDefinitionManager())
                 ;
         }
     }
