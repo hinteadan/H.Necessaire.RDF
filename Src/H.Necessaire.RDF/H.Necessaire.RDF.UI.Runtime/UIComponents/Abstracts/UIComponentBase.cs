@@ -9,12 +9,11 @@ namespace H.Necessaire.RDF.UI.Runtime.UIComponents.Abstracts
         private static readonly BrandingStyle brandingStyle = HNApp.Lication.Branding;
 
         private bool isBusy = false;
-        public event EventHandler OnIsBusyChanged;
 
         public bool IsBusy
         {
             get => isBusy;
-            private set => (isBusy = value).And(_ => RaiseOnIsBusyChanged());
+            private set => (isBusy = value).And(_ => OnBusyChanged().Wait(TimeSpan.FromSeconds(5)));
         }
 
         public virtual Task Destroy() => Task.CompletedTask;
@@ -22,6 +21,8 @@ namespace H.Necessaire.RDF.UI.Runtime.UIComponents.Abstracts
         public virtual Task Initialize() => Task.CompletedTask;
 
         public virtual Task RunAtStartup() => Task.CompletedTask;
+
+        public virtual Task OnBusyChanged() => Task.CompletedTask;
 
         public RuntimeConfig Config => runtimeConfig;
         public BrandingStyle Branding => brandingStyle;
@@ -36,14 +37,6 @@ namespace H.Necessaire.RDF.UI.Runtime.UIComponents.Abstracts
                     onStart: () => IsBusy = true,
                     onStop: () => IsBusy = false
                 );
-        }
-
-        private void RaiseOnIsBusyChanged()
-        {
-            if (OnIsBusyChanged == null)
-                return;
-
-            OnIsBusyChanged.Invoke(this, EventArgs.Empty);
         }
     }
 

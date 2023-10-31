@@ -5,8 +5,6 @@ namespace H.Necessaire.RDF.UI.Runtime.UIComponents
 {
     public interface ImAUIComponent
     {
-        event EventHandler OnIsBusyChanged;
-
         bool IsBusy { get; }
         RuntimeConfig Config { get; }
         BrandingStyle Branding { get; }
@@ -18,6 +16,8 @@ namespace H.Necessaire.RDF.UI.Runtime.UIComponents
         Task Initialize();
         Task Destroy();
         Task RunAtStartup();
+
+        Task OnBusyChanged();
 
         IDisposable BusyFlag();
     }
