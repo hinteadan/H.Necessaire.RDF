@@ -8,12 +8,10 @@ namespace H.Necessaire.RDF.UI.WindowsDesktop.Pages.Abstracts
 {
     public class PageStateController<TState> : UIComponentBase<TState> where TState : ImAUIComponentState
     {
-        readonly string statePropertyName = "State";
         readonly Action<PropertyChangedEventArgs> eventRaiser;
-        public PageStateController(TState initialState, Action<PropertyChangedEventArgs> eventRaiser, string statePropertyName = "State")
+        public PageStateController(TState initialState, Action<PropertyChangedEventArgs> eventRaiser)
         {
             State = initialState;
-            this.statePropertyName = statePropertyName;
             this.eventRaiser = eventRaiser;
         }
         public override async Task ApplyState(TState state)
@@ -24,7 +22,7 @@ namespace H.Necessaire.RDF.UI.WindowsDesktop.Pages.Abstracts
 
         private void NotifyStateChanged()
         {
-            eventRaiser?.Invoke(new PropertyChangedEventArgs(statePropertyName));
+            eventRaiser?.Invoke(new PropertyChangedEventArgs(null));
         }
     }
 }
