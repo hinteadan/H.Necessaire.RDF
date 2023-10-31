@@ -42,6 +42,10 @@
 
                 <TextBox Header="ID Tag" Text="{x:Bind State.RdfGraph.IDTag, Mode=TwoWay}" />
 
+                <TextBox Header="Display Label" Text="{x:Bind State.RdfGraph.DisplayLabel, Mode=TwoWay}" />
+                
+                
+
             </StackPanel>
         </Grid>
 

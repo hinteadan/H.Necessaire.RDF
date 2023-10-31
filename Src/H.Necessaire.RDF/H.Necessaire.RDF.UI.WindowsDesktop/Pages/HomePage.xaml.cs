@@ -44,10 +44,7 @@ namespace H.Necessaire.RDF.UI.WindowsDesktop.Pages
 
         private async void Debug_Click(object sender, RoutedEventArgs e)
         {
-            using (new ScopedRunner(
-                () => ((Button)sender).IsEnabled = false,
-                () => ((Button)sender).IsEnabled = true)
-            )
+            using ((sender as Button).DisabledScope())
             {
                 State.DebugLabel = DateTime.UtcNow.ToString();
                 await ApplyState(State);
