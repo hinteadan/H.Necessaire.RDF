@@ -6,6 +6,7 @@
     xmlns:local="using:H.Necessaire.RDF.UI.WindowsDesktop.Pages"
     xmlns:hn="using:H.Necessaire.RDF.UI.Runtime"
     xmlns:root="using:H.Necessaire.RDF.UI.WindowsDesktop"
+    xmlns:ctrl="using:H.Necessaire.RDF.UI.WindowsDesktop.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
@@ -41,6 +42,8 @@
         </Button>
 
         <TextBlock x:Name="debugLabel" Text="{x:Bind State.DebugLabel, Mode=OneWay}"/>
+
+        <ctrl:NoteEditor />
 
     </StackPanel>
 

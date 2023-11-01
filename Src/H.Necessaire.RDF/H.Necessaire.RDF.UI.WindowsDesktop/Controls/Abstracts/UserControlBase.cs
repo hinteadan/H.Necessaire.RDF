@@ -43,7 +43,7 @@ namespace H.Necessaire.RDF.UI.WindowsDesktop.Controls.Abstracts
             }
         }
 
-        public virtual async ValueTask DisposeAsync()
+        public async ValueTask DisposeAsync()
         {
             Loaded -= UserControlBase_Loaded;
             Loading -= PageUserControlBase_Loading;

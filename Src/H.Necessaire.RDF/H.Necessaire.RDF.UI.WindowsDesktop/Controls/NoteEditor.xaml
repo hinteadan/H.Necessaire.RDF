@@ -1,14 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<UserControl
+<local:NoteEditorBase
     x:Class="H.Necessaire.RDF.UI.WindowsDesktop.Controls.NoteEditor"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:H.Necessaire.RDF.UI.WindowsDesktop.Controls"
+    xmlns:hn="using:H.Necessaire.RDF.UI.Runtime"
+    xmlns:root="using:H.Necessaire.RDF.UI.WindowsDesktop"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid>
+    <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
 
-    </Grid>
-</UserControl>
+        <TextBox Header="Note ID" Text="{x:Bind NoteBeingEdited.ID, Mode=OneWay}" HorizontalAlignment="Stretch" TextChanged="ID_TextChanged" />
+
+        <TextBox Header="Note Value" Text="{x:Bind NoteBeingEdited.Value, Mode=OneWay}" HorizontalAlignment="Stretch" TextChanged="Value_TextChanged" />
+
+        <TextBlock Text="{x:Bind State.Note, Mode=OneWay}" />
+
+    </StackPanel>
+</local:NoteEditorBase>
