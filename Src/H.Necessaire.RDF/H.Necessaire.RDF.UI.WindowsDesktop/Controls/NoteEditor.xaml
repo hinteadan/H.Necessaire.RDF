@@ -16,7 +16,5 @@
 
         <TextBox Header="Note Value" Text="{x:Bind NoteBeingEdited.Value, Mode=OneWay}" HorizontalAlignment="Stretch" TextChanged="Value_TextChanged" />
 
-        <TextBlock Text="{x:Bind State.Note, Mode=OneWay}" />
-
     </StackPanel>
 </local:NoteEditorBase>
