@@ -35,7 +35,7 @@
                             <ColumnDefinition Width="*" />
                             <ColumnDefinition Width="{x:Bind root:BindOps.SizeForGrid(hn:HNApp.Lication.Branding.SizingUnitInPixels, 5)}" />
                         </Grid.ColumnDefinitions>
-                        <ctrl:NoteEditor NoteBeingEdited="{x:Bind}" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" Grid.Column="0"/>
+                        <ctrl:NoteEditor OnNoteChanged="NoteEditor_OnNoteChanged" NoteBeingEdited="{x:Bind}" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" Grid.Column="0"/>
                         <Button MinWidth="{x:Bind root:BindOps.Size(hn:HNApp.Lication.Branding.SizingUnitInPixels, 5)}" VerticalAlignment="Stretch" ToolTipService.ToolTip="Remove Note" Click="RemoveNote_Click" ClickMode="Release" DataContext="{x:Bind}" Grid.Column="1">
                             ❌
                         </Button>

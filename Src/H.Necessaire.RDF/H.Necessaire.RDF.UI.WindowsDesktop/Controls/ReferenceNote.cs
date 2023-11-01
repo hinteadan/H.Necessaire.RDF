@@ -14,7 +14,9 @@
         public static implicit operator Note(ReferenceNote note)
         {
             return
-                new Note { ID = note.ID, Value = note.Value };
+                note is null
+                ? new Note()
+                : new Note { ID = note.ID, Value = note.Value };
         }
 
         public override string ToString()

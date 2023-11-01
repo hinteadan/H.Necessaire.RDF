@@ -107,7 +107,7 @@ namespace H.Necessaire.RDF.UI.WindowsDesktop.Controls.Abstracts
                 Content = content,
                 PrimaryButtonText = confirmLabel,
                 SecondaryButtonText = infirmLabel,
-                CloseButtonText = "Cancel",
+                //CloseButtonText = "Cancel",
                 XamlRoot = XamlRoot,
             };
 

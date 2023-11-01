@@ -1,5 +1,6 @@
 using H.Necessaire.RDF.UI.Runtime.UIComponents.Abstracts;
 using H.Necessaire.RDF.UI.WindowsDesktop.Controls.Abstracts;
+using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using System;
 using System.Collections.ObjectModel;
@@ -29,7 +30,15 @@ namespace H.Necessaire.RDF.UI.WindowsDesktop.Controls
 
         public ObservableCollection<ReferenceNote> Notes { get; } = new ObservableCollection<ReferenceNote>();
 
-        public Func<Note[], Task> OnNotesChanged { get; set; }
+        public event EventHandler OnNotesChanged;
+
+        private async void NoteEditor_OnNoteChanged(object sender, EventArgs e)
+        {
+            using ((sender as Control).DisabledScope())
+            {
+                await HandleNotesChanged();
+            }
+        }
 
         private async void AddNote_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
         {
@@ -45,7 +54,7 @@ namespace H.Necessaire.RDF.UI.WindowsDesktop.Controls
             using ((sender as Button).DisabledScope())
             {
                 ReferenceNote noteToRemove = (sender as Button).DataContext as ReferenceNote;
-                bool isConfirmed = (await Confirm($"Are you sure you want to remove note {noteToRemove.ID} ?")).IsSuccessful;
+                bool isConfirmed = (await Confirm($"Are you sure you want to remove note {noteToRemove.ID} ?", "Remove Note")).IsSuccessful;
                 if (!isConfirmed)
                     return;
 
@@ -58,8 +67,7 @@ namespace H.Necessaire.RDF.UI.WindowsDesktop.Controls
         private async Task HandleNotesChanged()
         {
             State.Notes = Notes.Select(x => (Note)x).ToArrayNullIfEmpty();
-            if (OnNotesChanged != null)
-                await OnNotesChanged.Invoke(State.Notes);
+            OnNotesChanged?.Invoke(this, EventArgs.Empty);
             await ApplyState(State);
         }
     }

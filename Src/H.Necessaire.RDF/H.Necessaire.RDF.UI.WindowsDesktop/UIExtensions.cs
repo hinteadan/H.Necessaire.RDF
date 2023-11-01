@@ -5,7 +5,7 @@ namespace H.Necessaire.RDF.UI.WindowsDesktop
 {
     static class UIExtensions
     {
-        public static IDisposable DisabledScope(this Button button)
+        public static IDisposable DisabledScope(this Control button)
         {
             return
                 new ScopedRunner(

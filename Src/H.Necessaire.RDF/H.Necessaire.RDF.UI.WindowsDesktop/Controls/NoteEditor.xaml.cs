@@ -34,15 +34,21 @@ namespace H.Necessaire.RDF.UI.WindowsDesktop.Controls
             noteChangeDebouncer.Dispose();
         }
 
-        public ReferenceNote NoteBeingEdited { get; set; }
+        ReferenceNote noteBeingEdited;
+        public ReferenceNote NoteBeingEdited { 
+            get => noteBeingEdited;
+            set {
+                noteBeingEdited = value;
+                NotifyStateChanged();
+            }
+        }
 
-        public Func<Note, Task> OnNoteChanged { get; set; }
+        public event EventHandler OnNoteChanged;
 
         private async Task HandleNoteChange()
         {
             State.Note = NoteBeingEdited;
-            if(OnNoteChanged != null)
-                await OnNoteChanged.Invoke(State.Note);
+            OnNoteChanged?.Invoke(this, EventArgs.Empty);
             await ApplyState(State);
         }
 
