@@ -13,12 +13,6 @@
     HorizontalContentAlignment="Stretch"
     >
 
-    <local:NoteEditorBase.Resources>
-        <Style TargetType="TextBox">
-            <Setter Property="FontSize" Value="{x:Bind hn:HNApp.Lication.Branding.Typography.FontSizeSmall.Points}"/>
-        </Style>
-    </local:NoteEditorBase.Resources>
-
     <Grid HorizontalAlignment="Stretch">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*" />
@@ -28,6 +22,7 @@
         <TextBox
             Grid.Column="0"
             HorizontalAlignment="Stretch"
+            VerticalContentAlignment="Center"
             PlaceholderText="ID"
             Text="{x:Bind NoteBeingEdited.ID, Mode=OneWay}"
             TextChanged="ID_TextChanged"
@@ -36,6 +31,8 @@
         <TextBox
             Grid.Column="1"
             HorizontalAlignment="Stretch"
+            VerticalContentAlignment="Center"
+            TextAlignment="DetectFromContent"
             PlaceholderText="Value"
             Text="{x:Bind NoteBeingEdited.Value, Mode=OneWay}"
             TextChanged="Value_TextChanged"

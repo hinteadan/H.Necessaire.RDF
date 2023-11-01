@@ -16,12 +16,6 @@
     HorizontalContentAlignment="Stretch"
     >
 
-    <local:NotesEditorBase.Resources>
-        <Style TargetType="Button">
-            <Setter Property="FontSize" Value="{x:Bind hn:HNApp.Lication.Branding.Typography.FontSizeSmall.Points}"/>
-        </Style>
-    </local:NotesEditorBase.Resources>
-
     <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
 
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
@@ -39,10 +33,10 @@
                     <Grid HorizontalAlignment="Stretch">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="{x:Bind root:BindOps.SizeForGrid(hn:HNApp.Lication.Branding.SizingUnitInPixels, 4)}" />
+                            <ColumnDefinition Width="{x:Bind root:BindOps.SizeForGrid(hn:HNApp.Lication.Branding.SizingUnitInPixels, 5)}" />
                         </Grid.ColumnDefinitions>
                         <ctrl:NoteEditor NoteBeingEdited="{x:Bind}" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" Grid.Column="0"/>
-                        <Button MinWidth="{x:Bind root:BindOps.Size(hn:HNApp.Lication.Branding.SizingUnitInPixels, 4)}" VerticalAlignment="Stretch" ToolTipService.ToolTip="Remove Note" Click="RemoveNote_Click" ClickMode="Release" DataContext="{x:Bind}" Grid.Column="1">
+                        <Button MinWidth="{x:Bind root:BindOps.Size(hn:HNApp.Lication.Branding.SizingUnitInPixels, 5)}" VerticalAlignment="Stretch" ToolTipService.ToolTip="Remove Note" Click="RemoveNote_Click" ClickMode="Release" DataContext="{x:Bind}" Grid.Column="1">
                             ❌
                         </Button>
                     </Grid>

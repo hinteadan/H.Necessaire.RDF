@@ -35,7 +35,7 @@ namespace H.Necessaire.RDF.UI.WindowsDesktop.Controls
         {
             using ((sender as Button).DisabledScope())
             {
-                Notes.Add(DateTime.Now.ToString().NoteAs(Guid.NewGuid().ToString()));
+                Notes.Add(new ReferenceNote());
                 await HandleNotesChanged();
             }
         }
@@ -45,7 +45,7 @@ namespace H.Necessaire.RDF.UI.WindowsDesktop.Controls
             using ((sender as Button).DisabledScope())
             {
                 ReferenceNote noteToRemove = (sender as Button).DataContext as ReferenceNote;
-                bool isConfirmed = (await Confirm($"Are you sure you want to remove note {noteToRemove} ?")).IsSuccessful;
+                bool isConfirmed = (await Confirm($"Are you sure you want to remove note {noteToRemove.ID} ?")).IsSuccessful;
                 if (!isConfirmed)
                     return;
 
