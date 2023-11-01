@@ -32,7 +32,6 @@
             Grid.Column="1"
             HorizontalAlignment="Stretch"
             VerticalContentAlignment="Center"
-            TextAlignment="DetectFromContent"
             PlaceholderText="Value"
             Text="{x:Bind NoteBeingEdited.Value, Mode=OneWay}"
             TextChanged="Value_TextChanged"

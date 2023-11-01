@@ -34,10 +34,7 @@ namespace H.Necessaire.RDF.UI.WindowsDesktop.Controls
 
         private async void NoteEditor_OnNoteChanged(object sender, EventArgs e)
         {
-            using ((sender as Control).DisabledScope())
-            {
-                await HandleNotesChanged();
-            }
+            await HandleNotesChanged();
         }
 
         private async void AddNote_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
