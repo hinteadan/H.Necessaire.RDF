@@ -11,7 +11,7 @@ namespace H.Necessaire.RDF.UI.WindowsDesktop.Controls
 {
     public abstract class NoteEditorBase : UserControlBase<NoteEditorBase.ControlState>
     {
-        public NoteEditorBase() : base(new ControlState { Note = "Test Value".NoteAs("ID") }) { }
+        public NoteEditorBase() : base(new ControlState()) { }
         public class ControlState : UIComponentStateBase
         {
             public Note Note { get; set; }

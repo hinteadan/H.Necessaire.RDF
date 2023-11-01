@@ -50,6 +50,7 @@
                 ItemTemplate="{StaticResource NoteEntryTemplate}"
                 ItemsSource="{x:Bind Notes}"
                 x:DefaultBindMode="OneWay"
+                TabFocusNavigation="Local"
                 />
 
         </StackPanel>
