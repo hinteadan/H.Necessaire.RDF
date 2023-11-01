@@ -4,10 +4,7 @@ using H.Necessaire.RDF.UI.Runtime.UIComponents.Concrete;
 using H.Necessaire.RDF.UI.Runtime.UINavigation;
 using Microsoft.UI.Xaml.Controls;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace H.Necessaire.RDF.UI.WindowsDesktop.Controls.Abstracts
@@ -100,6 +97,29 @@ namespace H.Necessaire.RDF.UI.WindowsDesktop.Controls.Abstracts
         protected void NotifyStateChanged()
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(null));
+        }
+
+        protected async Task<OperationResult<ContentDialogResult>> Confirm(string content, string title = null, string confirmLabel = "Yes", string infirmLabel = "No")
+        {
+            ContentDialog dialog = new ContentDialog
+            {
+                Title = title,
+                Content = content,
+                PrimaryButtonText = confirmLabel,
+                SecondaryButtonText = infirmLabel,
+                CloseButtonText = "Cancel",
+                XamlRoot = XamlRoot,
+            };
+
+            ContentDialogResult dialogResult = await dialog.ShowAsync(ContentDialogPlacement.Popup);
+
+            return
+                new OperationResult
+                {
+                    IsSuccessful = dialogResult == ContentDialogResult.Primary
+                }
+                .WithPayload(dialogResult)
+                ;
         }
     }
 }

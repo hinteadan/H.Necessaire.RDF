@@ -20,12 +20,11 @@ namespace H.Necessaire.RDF.UI.WindowsDesktop.Controls
 
     public sealed partial class NoteEditor : NoteEditorBase
     {
-        ReferenceNote noteBeingEdited;
         readonly Debouncer noteChangeDebouncer;
         public NoteEditor()
         {
             this.InitializeComponent();
-            noteBeingEdited = State.Note;
+            NoteBeingEdited = State.Note;
             noteChangeDebouncer = new Debouncer(HandleNoteChange, TimeSpan.FromSeconds(.3));
         }
 
@@ -35,46 +34,28 @@ namespace H.Necessaire.RDF.UI.WindowsDesktop.Controls
             noteChangeDebouncer.Dispose();
         }
 
-        public ReferenceNote NoteBeingEdited => noteBeingEdited;
+        public ReferenceNote NoteBeingEdited { get; set; }
 
         public Func<Note, Task> OnNoteChanged { get; set; }
 
         private async Task HandleNoteChange()
         {
-            State.Note = noteBeingEdited;
-            OnNoteChanged?.Invoke(State.Note);
+            State.Note = NoteBeingEdited;
+            if(OnNoteChanged != null)
+                await OnNoteChanged.Invoke(State.Note);
             await ApplyState(State);
         }
 
-        private async void ID_TextChanged(object sender, Microsoft.UI.Xaml.Controls.TextChangedEventArgs e)
+        private async void ID_TextChanged(object sender, TextChangedEventArgs e)
         {
-            noteBeingEdited.ID = (sender as TextBox).Text; ;
+            NoteBeingEdited.ID = (sender as TextBox).Text; ;
             await noteChangeDebouncer.Invoke();
         }
 
-        private async void Value_TextChanged(object sender, Microsoft.UI.Xaml.Controls.TextChangedEventArgs e)
+        private async void Value_TextChanged(object sender, TextChangedEventArgs e)
         {
-            noteBeingEdited.Value = (sender as TextBox).Text; ;
+            NoteBeingEdited.Value = (sender as TextBox).Text; ;
             await noteChangeDebouncer.Invoke();
-        }
-
-
-        public class ReferenceNote
-        {
-            public string ID { get; set; }
-            public string Value { get; set; }
-
-            public static implicit operator ReferenceNote(Note note)
-            {
-                return
-                    new ReferenceNote { ID = note.ID, Value = note.Value };
-            }
-
-            public static implicit operator Note(ReferenceNote note)
-            {
-                return
-                    new Note { ID = note.ID, Value = note.Value };
-            }
         }
     }
 }

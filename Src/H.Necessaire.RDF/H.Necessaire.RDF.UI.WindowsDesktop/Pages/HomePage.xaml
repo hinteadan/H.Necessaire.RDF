@@ -43,7 +43,7 @@
 
         <TextBlock x:Name="debugLabel" Text="{x:Bind State.DebugLabel, Mode=OneWay}"/>
 
-        <ctrl:NoteEditor />
+        <ctrl:NotesEditor />
 
     </StackPanel>
 
