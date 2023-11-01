@@ -8,7 +8,10 @@
     xmlns:hn="using:H.Necessaire.RDF.UI.Runtime"
     xmlns:root="using:H.Necessaire.RDF.UI.WindowsDesktop"
     xmlns:local="using:H.Necessaire.RDF.UI.WindowsDesktop.Pages"
-    mc:Ignorable="d">
+    mc:Ignorable="d"
+    HorizontalAlignment="Stretch"
+    HorizontalContentAlignment="Stretch"
+    >
 
     <StackPanel
         Orientation="Vertical"

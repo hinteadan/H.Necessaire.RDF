@@ -10,7 +10,17 @@
     xmlns:root="using:H.Necessaire.RDF.UI.WindowsDesktop"
     xmlns:local="using:H.Necessaire.RDF.UI.WindowsDesktop.Controls"
     xmlns:ctrl="using:H.Necessaire.RDF.UI.WindowsDesktop.Controls"
-    mc:Ignorable="d">
+    mc:Ignorable="d"
+    FontSize="{x:Bind hn:HNApp.Lication.Branding.Typography.FontSizeSmall.Points}"
+    HorizontalAlignment="Stretch"
+    HorizontalContentAlignment="Stretch"
+    >
+
+    <local:NotesEditorBase.Resources>
+        <Style TargetType="Button">
+            <Setter Property="FontSize" Value="{x:Bind hn:HNApp.Lication.Branding.Typography.FontSizeSmall.Points}"/>
+        </Style>
+    </local:NotesEditorBase.Resources>
 
     <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
 
@@ -26,14 +36,18 @@
 
             <StackPanel.Resources>
                 <DataTemplate x:Key="NoteEntryTemplate" x:DataType="ctrl:ReferenceNote" x:DefaultBindMode="OneWay" >
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
-                        <ctrl:NoteEditor NoteBeingEdited="{x:Bind}" />
-                        <Button VerticalAlignment="Stretch" ToolTipService.ToolTip="Remove Note" Click="RemoveNote_Click" ClickMode="Release" DataContext="{x:Bind}">
+                    <Grid HorizontalAlignment="Stretch">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="{x:Bind root:BindOps.SizeForGrid(hn:HNApp.Lication.Branding.SizingUnitInPixels, 4)}" />
+                        </Grid.ColumnDefinitions>
+                        <ctrl:NoteEditor NoteBeingEdited="{x:Bind}" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" Grid.Column="0"/>
+                        <Button MinWidth="{x:Bind root:BindOps.Size(hn:HNApp.Lication.Branding.SizingUnitInPixels, 4)}" VerticalAlignment="Stretch" ToolTipService.ToolTip="Remove Note" Click="RemoveNote_Click" ClickMode="Release" DataContext="{x:Bind}" Grid.Column="1">
                             ❌
                         </Button>
-                    </StackPanel>
+                    </Grid>
                 </DataTemplate>
-                <StackLayout x:Name="VerticalStackLayout" Orientation="Vertical" Spacing="8"/>
+                <StackLayout x:Name="VerticalStackLayout" Orientation="Vertical" Spacing="{x:Bind root:BindOps.Size(hn:HNApp.Lication.Branding.SizingUnitInPixels, 0.5)}" />
             </StackPanel.Resources>
 
             <ItemsRepeater

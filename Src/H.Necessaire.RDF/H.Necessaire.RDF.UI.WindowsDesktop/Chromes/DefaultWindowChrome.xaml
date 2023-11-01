@@ -12,6 +12,8 @@
     Name="WindowChrome"
     FontFamily="{x:Bind local:BindOps.FontFamily()}"
     >
+    
+    
 
     <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
         <Grid.ColumnDefinitions>
