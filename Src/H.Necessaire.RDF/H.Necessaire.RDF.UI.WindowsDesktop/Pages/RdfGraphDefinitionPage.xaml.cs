@@ -1,8 +1,13 @@
+using H.Necessaire.RDF.UI.Runtime;
 using H.Necessaire.RDF.UI.Runtime.UIComponents.Abstracts;
 using H.Necessaire.RDF.UI.Runtime.UseCases;
+using H.Necessaire.RDF.UI.WindowsDesktop.Controls;
 using H.Necessaire.RDF.UI.WindowsDesktop.Pages.Abstracts;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
+using Org.BouncyCastle.Utilities;
+using System;
+using System.Linq;
 using System.Threading.Tasks;
 
 // To learn more about WinUI, the WinUI project structure,
@@ -22,10 +27,12 @@ namespace H.Necessaire.RDF.UI.WindowsDesktop.Pages
     {
         #region Construct
         GraphDefinitionUseCase useCase;
+        Debouncer notesUpdateDebouncer;
         public RdfGraphDefinitionPage()
         {
             this.InitializeComponent();
             useCase = Get<GraphDefinitionUseCase>();
+            notesUpdateDebouncer = new Debouncer(UpdateRdfGraphNotes, TimeSpan.FromSeconds(.3));
         }
 
         public override async Task Initialize()
@@ -56,6 +63,25 @@ namespace H.Necessaire.RDF.UI.WindowsDesktop.Pages
                 await useCase.GenerateNewRdfGraphID();
                 await ApplyState(State);
             }
+        }
+
+        private async void NotesEditor_OnNotesChanged(object sender, System.EventArgs e)
+        {
+            NotesEditor notesEditor = (NotesEditor)sender;
+            rdfGraphLatestNotes = notesEditor.Notes.Select(x => (Note)x).Where(x => !x.IsEmpty()).ToArrayNullIfEmpty();
+            await notesUpdateDebouncer.Invoke();
+        }
+
+        Note[] rdfGraphLatestNotes = null;
+        private async Task UpdateRdfGraphNotes()
+        {
+            await useCase.UpdateRdfGraphNotes(rdfGraphLatestNotes);
+            await ApplyState(State);
+        }
+
+        private void Debug_Click(object sender, RoutedEventArgs e)
+        {
+            RdfGraph rdfGraph = HNApp.Lication.Deps.Get<HNAppState>().CurrentRdfGraph;
         }
     }
 }

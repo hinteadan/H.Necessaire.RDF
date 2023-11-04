@@ -30,5 +30,14 @@ namespace H.Necessaire.RDF.UI.Runtime.UseCases
                     await appStateManager.GetCurrentRdfGraph()
                 );
         }
+
+        public async Task UpdateRdfGraphNotes(Note[] notes)
+        {
+            await
+                graphDefinitionManager.UpdateRdfGraphNotes(
+                    await appStateManager.GetCurrentRdfGraph(),
+                    notes
+                );
+        }
     }
 }

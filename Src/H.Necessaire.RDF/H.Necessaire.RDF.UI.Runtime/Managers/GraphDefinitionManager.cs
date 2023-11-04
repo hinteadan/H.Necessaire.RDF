@@ -22,5 +22,15 @@ namespace H.Necessaire.RDF.UI.Runtime.Managers
 
             return Task.CompletedTask;
         }
+
+        public Task UpdateRdfGraphNotes(RdfGraph rdfGraph, Note[] notes)
+        {
+            if (rdfGraph is null)
+                return Task.CompletedTask;
+
+            rdfGraph.Notes = notes;
+
+            return Task.CompletedTask;
+        }
     }
 }
