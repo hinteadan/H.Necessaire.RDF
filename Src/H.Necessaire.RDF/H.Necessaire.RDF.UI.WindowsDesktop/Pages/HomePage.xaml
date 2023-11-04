@@ -7,6 +7,7 @@
     xmlns:hn="using:H.Necessaire.RDF.UI.Runtime"
     xmlns:root="using:H.Necessaire.RDF.UI.WindowsDesktop"
     xmlns:ctrl="using:H.Necessaire.RDF.UI.WindowsDesktop.Controls"
+    xmlns:el="using:H.Necessaire.RDF.UI.WindowsDesktop.Elements"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
@@ -46,7 +47,12 @@
 
         <TextBlock x:Name="debugLabel" Text="{x:Bind State.DebugLabel, Mode=OneWay}"/>
 
-        <ctrl:NotesEditor HorizontalAlignment="Stretch" />
+        <el:Section Title="Test">
+            <el:Section.Body>
+                <ctrl:NotesEditor HorizontalAlignment="Stretch" />
+            </el:Section.Body>
+        </el:Section>
+
 
     </StackPanel>
 

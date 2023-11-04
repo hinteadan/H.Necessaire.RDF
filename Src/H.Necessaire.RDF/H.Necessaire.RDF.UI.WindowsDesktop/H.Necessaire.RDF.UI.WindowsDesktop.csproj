@@ -16,6 +16,7 @@
     <None Remove="Controls\NotesEditor.xaml" />
     <None Remove="DefaultWindowChrome.xaml" />
     <None Remove="Elements\DefaultHeader.xaml" />
+    <None Remove="Elements\Section.xaml" />
     <None Remove="Pages\HomePage.xaml" />
     <None Remove="Pages\RdfGraphDefinitionPage.xaml" />
   </ItemGroup>
@@ -56,6 +57,11 @@
   <ItemGroup>
     <Folder Include="Assets\Icons\" />
     <Folder Include="Assets\Fonts\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Elements\Section.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Page Update="Controls\NotesEditor.xaml">
