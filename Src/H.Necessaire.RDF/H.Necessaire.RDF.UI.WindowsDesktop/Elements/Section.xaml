@@ -11,10 +11,16 @@
     mc:Ignorable="d"
     >
 
-    <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+    <Grid
+        HorizontalAlignment="Stretch"
+        VerticalAlignment="Stretch"
+        BorderThickness="1"
+        BorderBrush="DarkGray"
+        Padding="{x:Bind root:BindOps.SizeForThickness(hn:HNApp.Lication.Branding.SizingUnitInPixels, 1)}"
+        >
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="{x:Bind root:BindOps.SizeForGrid(hn:HNApp.Lication.Branding.SizingUnitInPixels, 4)}" />
+            <RowDefinition Height="{x:Bind TitleRowHeight}" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
@@ -22,7 +28,7 @@
             Grid.Row="0"
             HorizontalAlignment="Left"
             VerticalAlignment="Center"
-            Padding="{x:Bind root:BindOps.SizeForThickness(hn:HNApp.Lication.Branding.SizingUnitInPixels, 1)}"
+            Margin="{x:Bind root:BindOps.SizeForThickness(0, 0, 0, 0, hn:HNApp.Lication.Branding.SizingUnitInPixels, 1, 0, 0)}"
             Text="{x:Bind Title}"
             Visibility="{x:Bind TitleVisibility}"
             FontWeight="Bold"

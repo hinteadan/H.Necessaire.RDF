@@ -47,7 +47,7 @@
 
         <TextBlock x:Name="debugLabel" Text="{x:Bind State.DebugLabel, Mode=OneWay}"/>
 
-        <el:Section Title="Test" Description="desc">
+        <el:Section Title="Notes Editor">
             <el:Section.Body>
                 <ctrl:NotesEditor HorizontalAlignment="Stretch" />
             </el:Section.Body>

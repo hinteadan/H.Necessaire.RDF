@@ -1,3 +1,4 @@
+using H.Necessaire.RDF.UI.Runtime;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 
@@ -14,8 +15,10 @@ namespace H.Necessaire.RDF.UI.WindowsDesktop.Elements
         }
 
         public string Title { get; set; }
-        public Visibility TitleVisibility { get; set; }
+        public Visibility TitleVisibility => Title.IsEmpty() ? Visibility.Collapsed : Visibility.Visible;
         public string Description { get; set; }
         public UIElement Body { get; set; }
+
+        public GridLength TitleRowHeight => TitleVisibility == Visibility.Collapsed ? new GridLength(0, GridUnitType.Pixel) : new GridLength(HNApp.Lication.Branding.SizingUnitInPixels * 4, GridUnitType.Pixel);
     }
 }
