@@ -24,6 +24,7 @@
             VerticalAlignment="Center"
             Padding="{x:Bind root:BindOps.SizeForThickness(hn:HNApp.Lication.Branding.SizingUnitInPixels, 1)}"
             Text="{x:Bind Title}"
+            Visibility="{x:Bind TitleVisibility}"
             FontWeight="Bold"
             />
 
